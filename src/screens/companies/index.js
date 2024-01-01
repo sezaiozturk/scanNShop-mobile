@@ -3,7 +3,9 @@ import {SafeAreaView, Text} from 'react-native';
 const Companies = () => {
     return (
         <SafeAreaView>
-            <Text>Companies Screen</Text>
+            <Text style={{fontSize: 30, fontFamily: 'Alegreya-Italic'}}>
+                Companies Screen
+            </Text>
         </SafeAreaView>
     );
 };

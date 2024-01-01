@@ -12,8 +12,20 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1ABCAA25EA8644F99D2E9DBE /* Alegreya-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7415EBA1E1C14A27B3A7F9E4 /* Alegreya-SemiBoldItalic.ttf */; };
+		3B95FD2B4B704BCD84A7B2FC /* Alegreya-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66E84055DE0C451CA1955CF8 /* Alegreya-SemiBold.ttf */; };
+		4F124DF7EE6F4F2AA675EC14 /* Alegreya-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49521F93929C42AAA1AB5C46 /* Alegreya-MediumItalic.ttf */; };
+		5411B61082F14325AB6C60B9 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3390C753A494B5EA525C2CD /* Alegreya-Regular.ttf */; };
+		5F987139DAB04A6FBE05D00B /* Alegreya-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46C700616CE84AD39B314AC7 /* Alegreya-ExtraBold.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-scannshopMobil-scannshopMobilTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-scannshopMobil-scannshopMobilTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9054844EDCA44426A902C42D /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDDBB27917FC4D18A725ABE3 /* Alegreya-Medium.ttf */; };
+		99FF69656F964D02A029F16F /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 481CDE33EEC841CC826E44CD /* Alegreya-Italic.ttf */; };
+		A0F21935E0C54DACB3115DE0 /* Alegreya-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67F46CA7406A48938D2F6184 /* Alegreya-Bold.ttf */; };
+		C1BAC33F3F754C6096299EB2 /* Alegreya-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7941C5EBA6604ABEAB971B74 /* Alegreya-BoldItalic.ttf */; };
+		CB2EC9CCC50142FC9AFEE9F9 /* Alegreya-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9192CFE278554967A9E870EB /* Alegreya-BlackItalic.ttf */; };
+		D6627A9C09354FD398814D98 /* Alegreya-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BADAF7B06234BC48A05D543 /* Alegreya-ExtraBoldItalic.ttf */; };
+		F0EF753838E644209950A5B5 /* Alegreya-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23F99DD6B54498CA9C9225D /* Alegreya-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +49,25 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = scannshopMobil/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = scannshopMobil/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-scannshopMobil-scannshopMobilTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-scannshopMobil-scannshopMobilTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BADAF7B06234BC48A05D543 /* Alegreya-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-ExtraBoldItalic.ttf"; path = "../assets/fonts/Alegreya-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-scannshopMobil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scannshopMobil.debug.xcconfig"; path = "Target Support Files/Pods-scannshopMobil/Pods-scannshopMobil.debug.xcconfig"; sourceTree = "<group>"; };
+		46C700616CE84AD39B314AC7 /* Alegreya-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-ExtraBold.ttf"; path = "../assets/fonts/Alegreya-ExtraBold.ttf"; sourceTree = "<group>"; };
+		481CDE33EEC841CC826E44CD /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-Italic.ttf"; path = "../assets/fonts/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
+		49521F93929C42AAA1AB5C46 /* Alegreya-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-MediumItalic.ttf"; path = "../assets/fonts/Alegreya-MediumItalic.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-scannshopMobil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scannshopMobil.release.xcconfig"; path = "Target Support Files/Pods-scannshopMobil/Pods-scannshopMobil.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-scannshopMobil-scannshopMobilTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scannshopMobil-scannshopMobilTests.debug.xcconfig"; path = "Target Support Files/Pods-scannshopMobil-scannshopMobilTests/Pods-scannshopMobil-scannshopMobilTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-scannshopMobil.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-scannshopMobil.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E84055DE0C451CA1955CF8 /* Alegreya-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-SemiBold.ttf"; path = "../assets/fonts/Alegreya-SemiBold.ttf"; sourceTree = "<group>"; };
+		67F46CA7406A48938D2F6184 /* Alegreya-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-Bold.ttf"; path = "../assets/fonts/Alegreya-Bold.ttf"; sourceTree = "<group>"; };
+		7415EBA1E1C14A27B3A7F9E4 /* Alegreya-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-SemiBoldItalic.ttf"; path = "../assets/fonts/Alegreya-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		7941C5EBA6604ABEAB971B74 /* Alegreya-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-BoldItalic.ttf"; path = "../assets/fonts/Alegreya-BoldItalic.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = scannshopMobil/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-scannshopMobil-scannshopMobilTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scannshopMobil-scannshopMobilTests.release.xcconfig"; path = "Target Support Files/Pods-scannshopMobil-scannshopMobilTests/Pods-scannshopMobil-scannshopMobilTests.release.xcconfig"; sourceTree = "<group>"; };
+		9192CFE278554967A9E870EB /* Alegreya-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-BlackItalic.ttf"; path = "../assets/fonts/Alegreya-BlackItalic.ttf"; sourceTree = "<group>"; };
+		A23F99DD6B54498CA9C9225D /* Alegreya-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-Black.ttf"; path = "../assets/fonts/Alegreya-Black.ttf"; sourceTree = "<group>"; };
+		C3390C753A494B5EA525C2CD /* Alegreya-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-Regular.ttf"; path = "../assets/fonts/Alegreya-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FDDBB27917FC4D18A725ABE3 /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Alegreya-Medium.ttf"; path = "../assets/fonts/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +130,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7F6AD7278D33453EA606436F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A23F99DD6B54498CA9C9225D /* Alegreya-Black.ttf */,
+				9192CFE278554967A9E870EB /* Alegreya-BlackItalic.ttf */,
+				67F46CA7406A48938D2F6184 /* Alegreya-Bold.ttf */,
+				7941C5EBA6604ABEAB971B74 /* Alegreya-BoldItalic.ttf */,
+				46C700616CE84AD39B314AC7 /* Alegreya-ExtraBold.ttf */,
+				2BADAF7B06234BC48A05D543 /* Alegreya-ExtraBoldItalic.ttf */,
+				481CDE33EEC841CC826E44CD /* Alegreya-Italic.ttf */,
+				FDDBB27917FC4D18A725ABE3 /* Alegreya-Medium.ttf */,
+				49521F93929C42AAA1AB5C46 /* Alegreya-MediumItalic.ttf */,
+				C3390C753A494B5EA525C2CD /* Alegreya-Regular.ttf */,
+				66E84055DE0C451CA1955CF8 /* Alegreya-SemiBold.ttf */,
+				7415EBA1E1C14A27B3A7F9E4 /* Alegreya-SemiBoldItalic.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +166,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				7F6AD7278D33453EA606436F /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -243,6 +288,18 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				F0EF753838E644209950A5B5 /* Alegreya-Black.ttf in Resources */,
+				CB2EC9CCC50142FC9AFEE9F9 /* Alegreya-BlackItalic.ttf in Resources */,
+				A0F21935E0C54DACB3115DE0 /* Alegreya-Bold.ttf in Resources */,
+				C1BAC33F3F754C6096299EB2 /* Alegreya-BoldItalic.ttf in Resources */,
+				5F987139DAB04A6FBE05D00B /* Alegreya-ExtraBold.ttf in Resources */,
+				D6627A9C09354FD398814D98 /* Alegreya-ExtraBoldItalic.ttf in Resources */,
+				99FF69656F964D02A029F16F /* Alegreya-Italic.ttf in Resources */,
+				9054844EDCA44426A902C42D /* Alegreya-Medium.ttf in Resources */,
+				4F124DF7EE6F4F2AA675EC14 /* Alegreya-MediumItalic.ttf in Resources */,
+				5411B61082F14325AB6C60B9 /* Alegreya-Regular.ttf in Resources */,
+				3B95FD2B4B704BCD84A7B2FC /* Alegreya-SemiBold.ttf in Resources */,
+				1ABCAA25EA8644F99D2E9DBE /* Alegreya-SemiBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
