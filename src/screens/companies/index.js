@@ -1,5 +1,6 @@
 import {SafeAreaView, Text} from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Button} from '../../components';
 
 const Companies = () => {
     return (
@@ -12,9 +13,17 @@ const Companies = () => {
                 }}>
                 Companies Screen
             </Text>
-            <MaterialCommunityIcons
-                name="airplane"
-                style={{fontSize: 40, color: 'green'}}
+            <Icon name="airplane" style={{fontSize: 40, color: 'green'}} />
+            <Button title={'button'} spreadBehavior="alignSelf" />
+            <Button
+                title={'button'}
+                spreadBehavior="alignSelf"
+                variant="outlined"
+            />
+            <Button
+                title={'button'}
+                spreadBehavior="alignSelf"
+                variant="ghost"
             />
         </SafeAreaView>
     );
