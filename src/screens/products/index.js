@@ -1,16 +1,15 @@
-import {FlatList, SafeAreaView, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {CompanyCard, ProductCard} from '../../components';
+import {FlatList, SafeAreaView} from 'react-native';
+import {ProductCard, TopBar} from '../../components';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import style from './stylesheet';
 import {useColors} from '../../utils/settings';
 
-const Products = ({route}) => {
+const Products = ({navigation, route}) => {
     const colors = useColors();
     const classes = style({colors});
     const [products, setProducts] = useState([]);
-    const {id} = route.params;
+    const {id, name} = route.params;
     useEffect(() => {
         getProducts();
     }, []);
@@ -31,6 +30,21 @@ const Products = ({route}) => {
     };
     return (
         <SafeAreaView style={classes.container}>
+            <TopBar
+                title={name}
+                leftOne={{
+                    name: 'chevron-left',
+                    onPress: () => navigation.goBack(),
+                }}
+                rightOne={{
+                    name: 'camera',
+                    onPress: () => navigation.goBack(),
+                }}
+                rightTwo={{
+                    name: 'barcode-scan',
+                    onPress: () => navigation.goBack(),
+                }}
+            />
             <FlatList
                 data={products}
                 renderItem={renderItem}

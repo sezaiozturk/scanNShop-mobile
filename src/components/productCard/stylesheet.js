@@ -29,8 +29,12 @@ const style = ({colors}) => {
             fontSize: 16,
         },
         price: {
-            fontFamily: 'Alegreya-Medium',
+            fontFamily: 'Alegreya-Regular',
             fontSize: 16,
+        },
+        add: {
+            padding: 5,
+            borderRadius: 100,
         },
     });
 };

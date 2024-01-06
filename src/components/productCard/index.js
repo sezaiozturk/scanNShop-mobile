@@ -9,18 +9,21 @@ const ProductCard = ({product, index}) => {
     const typography = useSelector(({theme}) => theme.typography);
     const colors = useColors();
     const classes = styles({colors});
-    const backgroundColor = index % 2 === 0 ? 'white' : '#55D968';
+    const backgroundColor = index % 2 === 0 ? '#55D968' : 'white';
+    const plus = index % 2 === 0 ? 'white' : '#55D968';
     return (
-        <TouchableOpacity
-            style={[classes.container, {backgroundColor}]}
-            activeOpacity={0.5}
-            onPress={() => null}>
+        <View style={[classes.container, {backgroundColor}]}>
             <View style={classes.leftContainer}>
                 <Image style={classes.image} src={product.image} />
-                <Text style={classes.name}>{product.name}</Text>
+                <View>
+                    <Text style={classes.name}>{product.name}</Text>
+                    <Text style={classes.price}>{product.price} TL</Text>
+                </View>
             </View>
-            <Text style={classes.price}>{product.price} TL</Text>
-        </TouchableOpacity>
+            <TouchableOpacity style={classes.add} activeOpacity={0.5}>
+                <Icon name="plus-circle" color={plus} size={26} />
+            </TouchableOpacity>
+        </View>
     );
 };
 

@@ -15,7 +15,7 @@ const CompanyCard = ({name, id}) => {
         <TouchableOpacity
             style={classes.container}
             activeOpacity={0.5}
-            onPress={() => navigation.navigate('ProductsScreen', {id})}>
+            onPress={() => navigation.navigate('ProductsScreen', {id, name})}>
             <Text style={classes.title}>{name}</Text>
         </TouchableOpacity>
     );
