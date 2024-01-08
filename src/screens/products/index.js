@@ -10,6 +10,7 @@ const Products = ({navigation, route}) => {
     const classes = style({colors});
     const [products, setProducts] = useState([]);
     const {id, name} = route.params;
+
     useEffect(() => {
         getProducts();
     }, []);
@@ -42,7 +43,16 @@ const Products = ({navigation, route}) => {
                 }}
                 rightTwo={{
                     name: 'barcode-scan',
-                    onPress: () => navigation.goBack(),
+                    onPress: () => {
+                        navigation.navigate('BarcodScannerScreen');
+
+                        /*if (hasPermission) {
+                            navigation.navigate('BarcodScannerScreen');
+                        } else {
+                            //requestPermission();
+                            navigation.navigate('BarcodScannerScreen');
+                        }*/
+                    },
                 }}
             />
             <FlatList

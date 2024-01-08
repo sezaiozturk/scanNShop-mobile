@@ -5,7 +5,7 @@ import axios from 'axios';
 import {useEffect, useState} from 'react';
 import style from './stylesheet';
 import {useColors} from '../../utils/settings';
-//172.31.3.36
+//172.31.0.57
 
 const Companies = () => {
     const colors = useColors();

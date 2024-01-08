@@ -1,5 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Companies, Products} from '../screens';
+import {BarcodScanner, Companies, Products} from '../screens';
 
 const Router = () => {
     const Stack = createNativeStackNavigator();
@@ -7,6 +7,10 @@ const Router = () => {
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="CompaniesScreen" component={Companies} />
             <Stack.Screen name="ProductsScreen" component={Products} />
+            <Stack.Screen
+                name="BarcodScannerScreen"
+                component={BarcodScanner}
+            />
         </Stack.Navigator>
     );
 };
