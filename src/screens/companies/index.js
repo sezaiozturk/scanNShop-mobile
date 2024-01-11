@@ -5,7 +5,6 @@ import axios from 'axios';
 import {useEffect, useState} from 'react';
 import style from './stylesheet';
 import {useColors} from '../../utils/settings';
-//172.31.0.57
 
 const Companies = () => {
     const colors = useColors();
@@ -17,7 +16,7 @@ const Companies = () => {
     const getCompanies = () => {
         let temp = [];
         axios
-            .post('http://localhost:3001/companies')
+            .post('http://172.20.10.2:3001/companies')
             .then(companies => {
                 companies.data.map(company => {
                     temp.push(company);

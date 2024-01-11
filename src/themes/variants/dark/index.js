@@ -22,6 +22,7 @@ const colors = {
     red: '#F00',
     khaki: '#9E9807',
     boxShadow: 'rgba(255, 255, 255, 0.2)',
+    filter: 'rgba(0,0,0,0.8)',
 };
 const dark = {
     key: 'dark',
