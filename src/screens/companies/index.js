@@ -16,7 +16,7 @@ const Companies = () => {
     const getCompanies = () => {
         let temp = [];
         axios
-            .post('http://172.20.10.2:3001/companies')
+            .post('http://172.31.2.201:3001/companies')
             .then(companies => {
                 companies.data.map(company => {
                     temp.push(company);
