@@ -1,5 +1,5 @@
 import {FlatList, SafeAreaView} from 'react-native';
-import {ProductCard, TopBar} from '../../components';
+import {FlatButton, ProductCard, TopBar} from '../../components';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import style from './stylesheet';
@@ -14,10 +14,11 @@ const Products = ({navigation, route}) => {
     useEffect(() => {
         getProducts();
     }, []);
+
     const getProducts = () => {
         let temp = [];
         axios
-            .post('http://172.31.2.201:3001/admin/find', {companyId: id})
+            .post('http://172.31.1.10:3001/admin/find', {companyId: id})
             .then(products => {
                 products.data.map(product => {
                     temp.push(product);
@@ -27,7 +28,7 @@ const Products = ({navigation, route}) => {
             .catch(err => console.log(err));
     };
     const renderItem = ({item, index}) => {
-        return <ProductCard product={item} index={index} />;
+        return <ProductCard companyName={name} product={item} index={index} />;
     };
     return (
         <SafeAreaView style={classes.container}>
@@ -62,6 +63,7 @@ const Products = ({navigation, route}) => {
                 renderItem={renderItem}
                 keyExtractor={item => item._id}
             />
+            <FlatButton />
         </SafeAreaView>
     );
 };

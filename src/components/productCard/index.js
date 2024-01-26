@@ -3,9 +3,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useSelector} from 'react-redux';
 import styles from './stylesheet';
 import React from 'react';
-import {useColors} from '../../utils/settings';
+import {addProducts, totals, useColors} from '../../utils/settings';
 
-const ProductCard = ({product, index}) => {
+const ProductCard = ({companyName, product, index}) => {
     const typography = useSelector(({theme}) => theme.typography);
     const colors = useColors();
     const classes = styles({colors});
@@ -20,7 +20,13 @@ const ProductCard = ({product, index}) => {
                     <Text style={classes.price}>{product.price} TL</Text>
                 </View>
             </View>
-            <TouchableOpacity style={classes.add} activeOpacity={0.5}>
+            <TouchableOpacity
+                style={classes.add}
+                activeOpacity={0.5}
+                onPress={() => {
+                    addProducts({companyName, ...product});
+                    totals();
+                }}>
                 <Icon name="plus-circle" color={plus} size={26} />
             </TouchableOpacity>
         </View>

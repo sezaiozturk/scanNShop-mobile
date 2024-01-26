@@ -9,11 +9,9 @@ const style = ({colors}) => {
         },
         button: {
             backgroundColor: colors.white,
-            borderColor: colors.primary,
             position: 'relative',
             borderRadius: 100,
-            borderWidth: 2,
-            padding: 15,
+            padding: 10,
         },
         counterContainer: {
             backgroundColor: colors.primary,

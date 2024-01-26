@@ -1,6 +1,6 @@
 import {FlatList, SafeAreaView, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Button, CompanyCard} from '../../components';
+import {Button, CompanyCard, FlatButton} from '../../components';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import style from './stylesheet';
@@ -16,7 +16,7 @@ const Companies = () => {
     const getCompanies = () => {
         let temp = [];
         axios
-            .post('http://172.31.2.201:3001/companies')
+            .post('http://172.31.1.10:3001/companies')
             .then(companies => {
                 companies.data.map(company => {
                     temp.push(company);
@@ -39,6 +39,7 @@ const Companies = () => {
                 contentContainerStyle={classes.column}
                 columnWrapperStyle={classes.content}
             />
+            <FlatButton />
         </SafeAreaView>
     );
 };
