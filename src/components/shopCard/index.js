@@ -5,11 +5,11 @@ import styles from './stylesheet';
 import React, {useState} from 'react';
 import {useColors} from '../../utils/settings';
 
-const ShopCard = ({id, name = 'Ürün Adı', price = 0, image}) => {
+const ShopCard = ({id, name = 'Ürün Adı', price = 0, image, count = 1}) => {
     const typography = useSelector(({theme}) => theme.typography);
     const colors = useColors();
     const classes = styles({colors});
-    const [piece, setPiece] = useState(1);
+    const [piece, setPiece] = useState(count);
 
     const increment = () => {
         setPiece(piece + 1);

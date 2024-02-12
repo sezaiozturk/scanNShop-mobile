@@ -9,7 +9,8 @@ export const useLanguage = () => useSelector(({locale}) => locale.locale);
 export const useActiveLanguage = () =>
     useSelector(({locale}) => locale.activeLocale);
 
-export const useShoppingCart = () => useSelector(({shop}) => shop.shoppingCart);
+export const useShoppingCart = () =>
+    useSelector(({shop}) => shop.shoppingCartList);
 
 export const changeThemes = () => store.dispatch(change());
 export const changeLocales = () => store.dispatch(changeLocale());

@@ -21,7 +21,6 @@ const ShopDropdown = ({companyId, companyName, productList}) => {
                 activeOpacity={0.8}
                 style={classes.container}>
                 <Text style={classes.title}>{companyName}</Text>
-
                 <Icon
                     name={toggle ? 'chevron-up' : 'chevron-down'}
                     size={22}
@@ -35,6 +34,7 @@ const ShopDropdown = ({companyId, companyName, productList}) => {
                         name={product.name}
                         price={product.price}
                         image={product.image}
+                        count={product.count}
                     />
                 ))}
         </View>
