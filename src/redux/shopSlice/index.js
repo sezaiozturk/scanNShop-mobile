@@ -40,6 +40,27 @@ export const shopSlice = createSlice({
                 }
             }
         },
+        update: (state, action) => {
+            let x = state.shoppingCartList.find(
+                item => item.companyId === action.payload.companyId,
+            );
+            let del = state.shoppingCartList.indexOf(x);
+            let y = x.list.findIndex(item => item.id === action.payload.id);
+            if (action.payload.operation === '+') {
+                x.list[y].count += 1;
+                state.basketTotal += action.payload.price;
+            } else if (action.payload.operation === '-') {
+                x.list[y].count -= 1;
+                state.basketTotal -= action.payload.price;
+            } else {
+                x.list.splice(y, 1);
+                state.basketTotal -=
+                    action.payload.price * action.payload.count;
+            }
+            if (x.list.length === 0) {
+                state.shoppingCartList.splice(del, 1);
+            }
+        },
         total: state => {
             state.basketTotal = 0;
             state.shoppingCartList.map(company => {
@@ -50,7 +71,7 @@ export const shopSlice = createSlice({
         },
     },
 });
-export const {addProduct, total} = shopSlice.actions;
+export const {addProduct, update, total} = shopSlice.actions;
 
 export default shopSlice.reducer;
 

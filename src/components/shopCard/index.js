@@ -3,23 +3,37 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useSelector} from 'react-redux';
 import styles from './stylesheet';
 import React, {useState} from 'react';
-import {useColors} from '../../utils/settings';
+import {updates, useColors} from '../../utils/settings';
 
-const ShopCard = ({id, name = 'Ürün Adı', price = 0, image, count = 1}) => {
+const ShopCard = ({
+    id,
+    companyId,
+    name = 'Ürün Adı',
+    price = 0,
+    image,
+    count,
+}) => {
     const typography = useSelector(({theme}) => theme.typography);
     const colors = useColors();
     const classes = styles({colors});
-    const [piece, setPiece] = useState(count);
+    let operation;
 
     const increment = () => {
-        setPiece(piece + 1);
+        operation = '+';
+        updates({id, companyId, price, count, operation});
     };
     const decrement = () => {
-        if (piece - 1 === 0) {
-            //listeden kaldıracak kod
+        if (count - 1 === 0) {
+            operation = 'r';
+            updates({id, companyId, price, count, operation});
         } else {
-            setPiece(piece - 1);
+            operation = '-';
+            updates({id, companyId, price, count, operation});
         }
+    };
+    const remove = () => {
+        operation = 'r';
+        updates({id, companyId, price, count, operation});
     };
 
     return (
@@ -32,7 +46,8 @@ const ShopCard = ({id, name = 'Ürün Adı', price = 0, image, count = 1}) => {
                     <Text style={classes.name}>{name}</Text>
                     <TouchableOpacity
                         style={classes.button}
-                        activeOpacity={0.5}>
+                        activeOpacity={0.5}
+                        onPress={remove}>
                         <Icon name={'close'} size={20} color={colors.primary} />
                     </TouchableOpacity>
                 </View>
@@ -49,7 +64,7 @@ const ShopCard = ({id, name = 'Ürün Adı', price = 0, image, count = 1}) => {
                                 color={colors.primary}
                             />
                         </TouchableOpacity>
-                        <Text style={classes.count}>{piece}</Text>
+                        <Text style={classes.count}>{count}</Text>
                         <TouchableOpacity
                             style={classes.button}
                             activeOpacity={0.5}

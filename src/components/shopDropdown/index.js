@@ -30,7 +30,8 @@ const ShopDropdown = ({companyId, companyName, productList}) => {
             {toggle &&
                 productList.map(product => (
                     <ShopCard
-                        id={product._id}
+                        id={product.id}
+                        companyId={companyId}
                         name={product.name}
                         price={product.price}
                         image={product.image}
