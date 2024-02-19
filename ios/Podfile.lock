@@ -72,6 +72,9 @@ PODS:
     - hermes-engine/Pre-built (= 0.73.1)
   - hermes-engine/Pre-built (0.73.1)
   - libevent (2.1.12)
+  - MMKV (1.3.3):
+    - MMKVCore (~> 1.3.3)
+  - MMKVCore (1.3.3)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2022.05.16.00):
     - boost
@@ -944,7 +947,10 @@ PODS:
   - React-Mapbuffer (0.73.1):
     - glog
     - React-debug
-  - react-native-safe-area-context (4.8.2):
+  - react-native-mmkv (2.12.1):
+    - MMKV (>= 1.3.3)
+    - React-Core
+  - react-native-safe-area-context (4.9.0):
     - React-Core
   - react-native-worklets-core (0.2.4):
     - React
@@ -1117,6 +1123,8 @@ PODS:
     - React-jsi (= 0.73.1)
     - React-logger (= 0.73.1)
     - React-perflogger (= 0.73.1)
+  - RealmJS (12.6.0):
+    - React
   - RNScreens (3.29.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
@@ -1186,6 +1194,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector-modern`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
+  - react-native-mmkv (from `../node_modules/react-native-mmkv`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-worklets-core (from `../node_modules/react-native-worklets-core`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
@@ -1208,6 +1217,7 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RealmJS (from `../node_modules/realm`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - VisionCamera (from `../node_modules/react-native-vision-camera`)
@@ -1226,6 +1236,8 @@ SPEC REPOS:
     - FlipperKit
     - fmt
     - libevent
+    - MMKV
+    - MMKVCore
     - OpenSSL-Universal
     - SocketRocket
 
@@ -1285,6 +1297,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   React-Mapbuffer:
     :path: "../node_modules/react-native/ReactCommon"
+  react-native-mmkv:
+    :path: "../node_modules/react-native-mmkv"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-worklets-core:
@@ -1329,6 +1343,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RealmJS:
+    :path: "../node_modules/realm"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNVectorIcons:
@@ -1356,6 +1372,8 @@ SPEC CHECKSUMS:
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   hermes-engine: 34df9d5034e90bd9bf1505e1ca198760373935af
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  MMKV: f902fb6719da13c2ab0965233d8963a59416f911
+  MMKVCore: d26e4d3edd5cb8588c2569222cbd8be4231374e9
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 7169b2b1c44399c76a47b5deaaba715eeeb476c0
   RCTRequired: 6dda55e483f75d2b43781d8ad5bd7df276a50981
@@ -1378,7 +1396,8 @@ SPEC CHECKSUMS:
   React-jsinspector: 369048694e39942063c5d08e9580b43e2edd379a
   React-logger: e0c1e918d9588a9f39c9bc62d9d6bfe9ca238d9d
   React-Mapbuffer: 9731a0a63ebaf8976014623c4d637744d7353a7c
-  react-native-safe-area-context: 0ee144a6170530ccc37a0fd9388e28d06f516a89
+  react-native-mmkv: 124b22209aacdcd172b6ac39071b9647080f0411
+  react-native-safe-area-context: b97eb6f9e3b7f437806c2ce5983f479f8eb5de4b
   react-native-worklets-core: b4094f51cb2bc649e297206425cb8956f4945e3e
   React-nativeconfig: 37aecd26d64b79327c3f10e43b2e9a6c425e0a60
   React-NativeModulesApple: 9ca6d2eaa1dd5606588262195b46d0774bdec83a
@@ -1400,6 +1419,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 93a4c84e46a85c3fc9678abd4f6923b785226ea7
   React-utils: debda2c206770ee2785bdebb7f16d8db9f18838a
   ReactCommon: ddb128564dcbfa0287d3d1a2d10f8c7457c971f6
+  RealmJS: a62dc7a1f94b888fe9e8712cd650167ad97dc636
   RNScreens: b582cb834dc4133307562e930e8fa914b8c04ef2
   RNVectorIcons: 210f910e834e3485af40693ad4615c1ec22fc02b
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17

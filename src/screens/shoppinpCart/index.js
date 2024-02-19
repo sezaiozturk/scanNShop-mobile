@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useEffect, useState} from 'react';
 import style from './stylesheet';
 import {useBasketTotal, useColors, useShoppingCart} from '../../utils/settings';
+import {useRealm} from '@realm/react';
 
 const ShoppingCart = ({navigation}) => {
     const colors = useColors();
@@ -12,6 +13,7 @@ const ShoppingCart = ({navigation}) => {
     const [companies, setCompanies] = useState([]);
     const list = useShoppingCart();
     let basketTotal = useBasketTotal();
+    const realm = useRealm();
     useEffect(() => {
         getCompanies();
     }, []);
@@ -27,6 +29,7 @@ const ShoppingCart = ({navigation}) => {
             })
             .catch(err => console.log(err));
     };
+
     /*const renderItem = ({item}) => {
         return (
             <ShopCard name={item.name} price={item.price} count={item.count} />
