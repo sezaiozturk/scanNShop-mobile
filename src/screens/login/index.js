@@ -78,8 +78,7 @@ const Login = () => {
                     password: user.password,
                 }}
                 validationSchema={loginSchema}
-                onSubmit={handleLogin}
-                enableReinitialize>
+                onSubmit={handleLogin}>
                 {({
                     handleSubmit,
                     handleChange,
