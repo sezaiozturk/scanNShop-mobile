@@ -13,7 +13,7 @@ const ShoppingCart = ({navigation}) => {
     const [companies, setCompanies] = useState([]);
     const list = useShoppingCart();
     let basketTotal = useBasketTotal();
-    const realm = useRealm();
+    //const realm = useRealm();
     useEffect(() => {
         getCompanies();
     }, []);

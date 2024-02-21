@@ -6,6 +6,7 @@ import {useColors} from '../../utils/settings';
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
 import {signupSchema} from '../validationSchema';
+import axios from 'axios';
 
 const Signup = () => {
     const [secureTextEntry, setSecureTextEntry] = useState(true);
@@ -17,20 +18,31 @@ const Signup = () => {
     const toggleSecureEntry = () => {
         setSecureTextEntry(!secureTextEntry);
     };
+
     const toggleSecureEntry2 = () => {
         setSecureTextEntry2(!secureTextEntry2);
     };
 
-    const handleSignup = ({name, email, password, confirmPassword}) => {
-        console.log(name);
-        console.log(email);
-        console.log(password);
-        console.log(confirmPassword);
+    const handleSignup = ({name, email, password}) => {
+        axios
+            .post('http://localhost:3000/user/signup', {
+                name,
+                email,
+                password,
+            })
+            .then(res => {
+                console.log(res.headers);
+                //navigation.navigate('LoginScreen');
+            })
+            .catch(err => {
+                console.log(err);
+            })
+            .finally(() => null);
     };
     return (
         <SafeAreaView style={styles.container}>
             <Image
-                source={require('../../../assets/images/logo.png')}
+                source={require('../../assets/images/logo.png')}
                 style={styles.logo}
             />
             <Formik
@@ -58,7 +70,7 @@ const Signup = () => {
                             value={values.name}
                             onChangeText={handleChange('name')}
                             onBlur={handleBlur('name')}
-                            error={errors.name}
+                            error={touched.name && errors.name}
                         />
                         <TextInput
                             style={styles.input}
@@ -67,7 +79,7 @@ const Signup = () => {
                             value={values.email}
                             onChangeText={handleChange('email')}
                             onBlur={handleBlur('email')}
-                            error={errors.email}
+                            error={touched.email && errors.email}
                         />
                         <TextInput
                             style={styles.input}
@@ -75,7 +87,7 @@ const Signup = () => {
                             label={'Password'}
                             value={values.password}
                             onChangeText={handleChange('password')}
-                            error={errors.password}
+                            error={touched.password && errors.password}
                             secureTextEntry={secureTextEntry}
                             right={
                                 <TextInput.Icon
@@ -90,7 +102,10 @@ const Signup = () => {
                             label={'Confirm Password'}
                             value={values.confirmPassword}
                             onChangeText={handleChange('confirmPassword')}
-                            error={errors.confirmPassword}
+                            error={
+                                touched.confirmPassword &&
+                                errors.confirmPassword
+                            }
                             secureTextEntry={secureTextEntry2}
                             right={
                                 <TextInput.Icon

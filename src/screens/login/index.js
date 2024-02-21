@@ -1,9 +1,17 @@
 import {SafeAreaView, Image, View, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from './stylesheet';
-import {Button, TextInput, Checkbox, Text, useTheme} from 'react-native-paper';
+import {
+    Button,
+    TextInput,
+    Checkbox,
+    Text,
+    useTheme,
+    HelperText,
+    Snackbar,
+} from 'react-native-paper';
 import storage from '../../storage';
-import {useColors} from '../../utils/settings';
+import {changeAuths, useColors} from '../../utils/settings';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import {Formik} from 'formik';
@@ -17,6 +25,8 @@ const Login = () => {
     const colors = useColors();
     const navigation = useNavigation();
     const [user, setUser] = useState({email: '', password: ''});
+    const [message, setMessage] = useState('');
+    const [snackVisible, setSnackVisible] = useState(false);
 
     const toggleSecureEntry = () => {
         setSecureTextEntry(!secureTextEntry);
@@ -27,7 +37,16 @@ const Login = () => {
         if (checked) storage.delete('user');
     };
 
-    const handleRememberMe = () => {
+    const toggleSnack = () => {
+        setSnackVisible(!snackVisible);
+    };
+
+    const showMessage = message => {
+        setMessage(message);
+        toggleSnack();
+    };
+
+    const handleRememberMe = (email, password) => {
         if (checked) {
             storage.set(
                 'user',
@@ -43,18 +62,28 @@ const Login = () => {
 
     const handleLogin = ({email, password}) => {
         axios
-            .post('http://172.31.4.196:3001/user/signup', {
+            .post('http://localhost:3000/user/login', {
                 email,
                 password,
             })
             .then(res => {
-                handleRememberMe();
-                navigation.navigate('CompaniesScreen');
+                if (res.data === true) {
+                    const authToken = res.headers['x-auth-token'];
+                    storage.set('authToken', authToken);
+                    storage.set('isAuth', true);
+                    handleRememberMe(email, password);
+                    navigation.reset({
+                        index: 0,
+                        routes: [{name: 'CompaniesScreen'}],
+                    });
+                } else {
+                    showMessage(res.data);
+                }
             })
             .catch(err => {
-                console.log(err);
+                showMessage(err);
             })
-            .finally(() => setSubmitting(false));
+            .finally(() => null);
     };
 
     useEffect(() => {
@@ -69,7 +98,7 @@ const Login = () => {
     return (
         <SafeAreaView style={styles.container}>
             <Image
-                source={require('../../../assets/images/logo.png')}
+                source={require('../../assets/images/logo.png')}
                 style={styles.logo}
             />
             <Formik
@@ -78,7 +107,8 @@ const Login = () => {
                     password: user.password,
                 }}
                 validationSchema={loginSchema}
-                onSubmit={handleLogin}>
+                onSubmit={handleLogin}
+                enableReinitialize>
                 {({
                     handleSubmit,
                     handleChange,
@@ -95,15 +125,22 @@ const Login = () => {
                             value={values.email}
                             onChangeText={handleChange('email')}
                             onBlur={handleBlur('email')}
-                            error={errors.email}
+                            error={touched.email && errors.email}
                         />
+                        <HelperText
+                            type="error"
+                            visible={
+                                errors.email && touched.email ? true : false
+                            }>
+                            {errors.email}
+                        </HelperText>
                         <TextInput
                             style={styles.input}
                             mode="outlined"
                             label={'Password'}
                             value={values.password}
                             onChangeText={handleChange('password')}
-                            error={errors.password}
+                            error={touched.password && errors.password}
                             secureTextEntry={secureTextEntry}
                             right={
                                 <TextInput.Icon
@@ -112,6 +149,15 @@ const Login = () => {
                                 />
                             }
                         />
+                        <HelperText
+                            type="error"
+                            visible={
+                                errors.password && touched.password
+                                    ? true
+                                    : false
+                            }>
+                            {errors.password}
+                        </HelperText>
                         <TouchableOpacity
                             style={styles.rememberContainer}
                             onPress={toggleRememberMe}>
@@ -141,6 +187,12 @@ const Login = () => {
                     </View>
                 )}
             </Formik>
+            <Snackbar
+                visible={snackVisible}
+                duration={1500}
+                onDismiss={toggleSnack}>
+                {message}
+            </Snackbar>
         </SafeAreaView>
     );
 };

@@ -8,15 +8,27 @@ import {
     Login,
     Signup,
 } from '../screens';
+import storage from '../storage';
 
 const Router = () => {
     const Stack = createNativeStackNavigator();
+    const isAuth = storage.getBoolean('isAuth');
+
+    const AuthStack = () => {
+        return (
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+                <Stack.Screen name="LoginScreen" component={Login} />
+                <Stack.Screen name="SignupScreen" component={Signup} />
+            </Stack.Navigator>
+        );
+    };
 
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={{headerShown: false}}>
-                <Stack.Screen name="LoginScreen" component={Login} />
-                <Stack.Screen name="SignupScreen" component={Signup} />
+                {!isAuth && (
+                    <Stack.Screen name="AuthStack" component={AuthStack} />
+                )}
                 <Stack.Screen name="CompaniesScreen" component={Companies} />
                 <Stack.Screen name="ProductsScreen" component={Products} />
                 <Stack.Screen

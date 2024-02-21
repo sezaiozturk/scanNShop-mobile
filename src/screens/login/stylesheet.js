@@ -17,7 +17,7 @@ const style = StyleSheet.create({
         paddingVertical: 50,
     },
     input: {
-        marginVertical: 15,
+        marginTop: 10,
         fontSize: 14,
     },
     rememberContainer: {
