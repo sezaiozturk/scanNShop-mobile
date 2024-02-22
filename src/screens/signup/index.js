@@ -1,7 +1,14 @@
 import {SafeAreaView, Image, View, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from './stylesheet';
-import {Button, TextInput, Checkbox, Text, useTheme} from 'react-native-paper';
+import {
+    Button,
+    TextInput,
+    Checkbox,
+    Text,
+    useTheme,
+    HelperText,
+} from 'react-native-paper';
 import {useColors} from '../../utils/settings';
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
@@ -31,13 +38,15 @@ const Signup = () => {
                 password,
             })
             .then(res => {
-                console.log(res.headers);
-                //navigation.navigate('LoginScreen');
+                if (res.data === true) {
+                    navigation.navigate('LoginScreen');
+                } else {
+                    console.log(res.data);
+                }
             })
             .catch(err => {
                 console.log(err);
-            })
-            .finally(() => null);
+            });
     };
     return (
         <SafeAreaView style={styles.container}>
@@ -72,6 +81,14 @@ const Signup = () => {
                             onBlur={handleBlur('name')}
                             error={touched.name && errors.name}
                         />
+                        <HelperText
+                            style={styles.helperText}
+                            type="error"
+                            visible={
+                                errors.name && touched.name ? true : false
+                            }>
+                            {errors.name}
+                        </HelperText>
                         <TextInput
                             style={styles.input}
                             mode="outlined"
@@ -81,6 +98,14 @@ const Signup = () => {
                             onBlur={handleBlur('email')}
                             error={touched.email && errors.email}
                         />
+                        <HelperText
+                            style={styles.helperText}
+                            type="error"
+                            visible={
+                                errors.email && touched.email ? true : false
+                            }>
+                            {errors.email}
+                        </HelperText>
                         <TextInput
                             style={styles.input}
                             mode="outlined"
@@ -96,6 +121,16 @@ const Signup = () => {
                                 />
                             }
                         />
+                        <HelperText
+                            style={styles.helperText}
+                            type="error"
+                            visible={
+                                errors.password && touched.password
+                                    ? true
+                                    : false
+                            }>
+                            {errors.password}
+                        </HelperText>
                         <TextInput
                             style={styles.input}
                             mode="outlined"
@@ -114,10 +149,21 @@ const Signup = () => {
                                 />
                             }
                         />
+                        <HelperText
+                            style={styles.helperText}
+                            type="error"
+                            visible={
+                                errors.confirmPassword &&
+                                touched.confirmPassword
+                                    ? true
+                                    : false
+                            }>
+                            {errors.confirmPassword}
+                        </HelperText>
                         <Button
                             mode="contained"
                             onPress={handleSubmit}
-                            style={{marginTop: 40}}>
+                            style={{marginTop: 20}}>
                             Signup
                         </Button>
                         <TouchableOpacity

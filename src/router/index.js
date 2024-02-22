@@ -9,10 +9,30 @@ import {
     Signup,
 } from '../screens';
 import storage from '../storage';
+import {useEffect} from 'react';
+import axios from 'axios';
+import {totals, updateShoppingCartLists} from '../utils/settings';
 
 const Router = () => {
     const Stack = createNativeStackNavigator();
-    const isAuth = storage.getBoolean('isAuth');
+    const user = storage.getString('user');
+    useEffect(() => {
+        const authUser = storage.getString('user');
+        if (authUser) {
+            const {_id} = JSON.parse(authUser);
+            axios
+                .post('http://localhost:3000/user/getShoppingCartList', {
+                    _id,
+                })
+                .then(res => {
+                    const shoppingCarts = res.data.shoppingCarts;
+                    if (shoppingCarts) {
+                        updateShoppingCartLists(shoppingCarts);
+                        totals();
+                    }
+                });
+        }
+    }, []);
 
     const AuthStack = () => {
         return (
@@ -26,7 +46,7 @@ const Router = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={{headerShown: false}}>
-                {!isAuth && (
+                {!user && (
                     <Stack.Screen name="AuthStack" component={AuthStack} />
                 )}
                 <Stack.Screen name="CompaniesScreen" component={Companies} />

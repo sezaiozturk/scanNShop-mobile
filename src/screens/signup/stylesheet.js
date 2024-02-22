@@ -14,10 +14,9 @@ const style = StyleSheet.create({
     },
     inputContainer: {
         paddingHorizontal: 20,
-        paddingVertical: 50,
+        paddingVertical: 30,
     },
     input: {
-        marginVertical: 5,
         fontSize: 14,
     },
     signupContainer: {
@@ -25,6 +24,10 @@ const style = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 50,
+    },
+    helperText: {
+        justifyContent: 'flex-start',
+        height: 35,
     },
 });
 

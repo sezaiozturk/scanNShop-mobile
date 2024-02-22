@@ -13,11 +13,10 @@ const style = StyleSheet.create({
         width: 150,
     },
     inputContainer: {
-        paddingHorizontal: 20,
+        paddingHorizontal: 15,
         paddingVertical: 50,
     },
     input: {
-        marginTop: 10,
         fontSize: 14,
     },
     rememberContainer: {
@@ -31,6 +30,10 @@ const style = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 50,
+    },
+    helperText: {
+        justifyContent: 'flex-start',
+        height: 35,
     },
 });
 

@@ -20,7 +20,7 @@ const Companies = () => {
     const getCompanies = () => {
         let temp = [];
         axios
-            .post('http://172.31.0.2:3001/companies')
+            .post('http://172.31.8.32:3001/companies')
             .then(companies => {
                 companies.data.map(company => {
                     temp.push(company);
@@ -45,12 +45,17 @@ const Companies = () => {
             />
             <FlatButton />
             <Button
+                style={{width: 50, backgroundColor: 'black', margin: 10}}
                 onPress={() => {
-                    storage.delete('isAuth');
+                    /*storage.delete('user');
                     storage.delete('authToken');
                     navigation.reset({
                         index: 0,
                         routes: [{name: 'AuthStack'}],
+                    });*/
+                    axios.post('http://localhost:3000/user/deneme', {
+                        _id: '65d6a75743e65ebe5aa9edc1',
+                        shoppingCarts: [],
                     });
                 }}>
                 df

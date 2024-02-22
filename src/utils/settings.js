@@ -2,7 +2,12 @@ import {useSelector} from 'react-redux';
 import {change} from '../redux/themeSlice';
 import {changeLocale} from '../redux/localeSlice';
 import {store} from '../redux/store';
-import {addProduct, total, update} from '../redux/shopSlice';
+import {
+    addProduct,
+    total,
+    update,
+    updateShoppingCartList,
+} from '../redux/shopSlice';
 import {changeAuth} from '../redux/authSlice';
 
 export const useColors = () => useSelector(({theme}) => theme.colors);
@@ -22,3 +27,5 @@ export const updates = (id, companyId, price, count, operation) =>
 export const totals = () => store.dispatch(total());
 export const useBasketTotal = () => useSelector(({shop}) => shop.basketTotal);
 export const changeAuths = () => store.dispatch(changeAuth());
+export const updateShoppingCartLists = shoppingCarts =>
+    store.dispatch(updateShoppingCartList(shoppingCarts));

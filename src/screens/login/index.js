@@ -24,7 +24,7 @@ const Login = () => {
     const theme = useTheme();
     const colors = useColors();
     const navigation = useNavigation();
-    const [user, setUser] = useState({email: '', password: ''});
+    const [rememberUser, setRememberUser] = useState({email: '', password: ''});
     const [message, setMessage] = useState('');
     const [snackVisible, setSnackVisible] = useState(false);
 
@@ -34,7 +34,6 @@ const Login = () => {
 
     const toggleRememberMe = () => {
         setChecked(!checked);
-        if (checked) storage.delete('user');
     };
 
     const toggleSnack = () => {
@@ -49,14 +48,14 @@ const Login = () => {
     const handleRememberMe = (email, password) => {
         if (checked) {
             storage.set(
-                'user',
+                'remember',
                 JSON.stringify({
                     email,
                     password,
                 }),
             );
         } else {
-            storage.delete('user');
+            storage.delete('remember');
         }
     };
 
@@ -67,10 +66,11 @@ const Login = () => {
                 password,
             })
             .then(res => {
-                if (res.data === true) {
+                const user = res.data;
+                if (user) {
                     const authToken = res.headers['x-auth-token'];
                     storage.set('authToken', authToken);
-                    storage.set('isAuth', true);
+                    storage.set('user', JSON.stringify(user));
                     handleRememberMe(email, password);
                     navigation.reset({
                         index: 0,
@@ -81,16 +81,18 @@ const Login = () => {
                 }
             })
             .catch(err => {
-                showMessage(err);
-            })
-            .finally(() => null);
+                console.log(err);
+            });
     };
 
     useEffect(() => {
-        const jsonUser = storage.getString('user');
-        if (jsonUser) {
-            const initialUser = JSON.parse(jsonUser);
-            setUser({email: initialUser.email, password: initialUser.password});
+        const rememberUser = storage.getString('remember');
+        if (rememberUser) {
+            const initialUser = JSON.parse(rememberUser);
+            setRememberUser({
+                email: initialUser.email,
+                password: initialUser.password,
+            });
             setChecked(true);
         }
     }, []);
@@ -103,8 +105,8 @@ const Login = () => {
             />
             <Formik
                 initialValues={{
-                    email: user.email,
-                    password: user.password,
+                    email: rememberUser.email,
+                    password: rememberUser.password,
                 }}
                 validationSchema={loginSchema}
                 onSubmit={handleLogin}
@@ -126,8 +128,11 @@ const Login = () => {
                             onChangeText={handleChange('email')}
                             onBlur={handleBlur('email')}
                             error={touched.email && errors.email}
+                            secureTextEntry={false}
+                            right={null}
                         />
                         <HelperText
+                            style={styles.helperText}
                             type="error"
                             visible={
                                 errors.email && touched.email ? true : false
@@ -150,6 +155,7 @@ const Login = () => {
                             }
                         />
                         <HelperText
+                            style={styles.helperText}
                             type="error"
                             visible={
                                 errors.password && touched.password

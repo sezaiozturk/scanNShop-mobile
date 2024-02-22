@@ -1,8 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
+import axios from 'axios';
+import storage from '../../storage';
+import {useEffect} from 'react';
 const initialState = {
     shoppingCartList: [],
     basketTotal: 0,
 };
+const authUser = storage.getString('user');
+const {_id} = JSON.parse(authUser);
 
 export const shopSlice = createSlice({
     name: 'shop',
@@ -19,6 +24,7 @@ export const shopSlice = createSlice({
                 price: action.payload.price,
                 count: 1,
             };
+
             let x = state.shoppingCartList.findIndex(
                 item => item.companyId == action.payload.companyId,
             );
@@ -39,6 +45,10 @@ export const shopSlice = createSlice({
                     state.shoppingCartList[x].list[y].count += 1;
                 }
             }
+            axios.post('http://localhost:3000/user/updateShoppingCart', {
+                _id,
+                shoppingCarts: state.shoppingCartList,
+            });
         },
         update: (state, action) => {
             let x = state.shoppingCartList.find(
@@ -60,6 +70,10 @@ export const shopSlice = createSlice({
             if (x.list.length === 0) {
                 state.shoppingCartList.splice(del, 1);
             }
+            axios.post('http://localhost:3000/user/updateShoppingCart', {
+                _id,
+                shoppingCarts: state.shoppingCartList,
+            });
         },
         total: state => {
             state.basketTotal = 0;
@@ -69,9 +83,14 @@ export const shopSlice = createSlice({
                 });
             });
         },
+        updateShoppingCartList: (state, action) => {
+            console.log(action.payload, 'redux');
+            state.shoppingCartList = action.payload;
+        },
     },
 });
-export const {addProduct, update, total} = shopSlice.actions;
+export const {addProduct, update, updateShoppingCartList, total} =
+    shopSlice.actions;
 
 export default shopSlice.reducer;
 

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const UserModel = require('./models/User');
 const auth = require('./middleware/auth');
+const ShoppingCartModel = require('./models/ShoppingCart');
 
 app.use(express.json());
 
@@ -28,7 +29,7 @@ app.post('/user/signup', async (req, res) => {
 
     await user.save();
     const token = user.createAuthToken();
-    res.header('x-auth-token', token).send(user);
+    res.header('x-auth-token', token).send(true);
 });
 
 app.post('/user/login', async (req, res) => {
@@ -42,7 +43,46 @@ app.post('/user/login', async (req, res) => {
     if (!isSuccess) return res.send('hatalı şifre yada email');
 
     const token = user.createAuthToken();
-    res.header('x-auth-token', token).send(true);
+    res.header('x-auth-token', token).send(user);
+});
+
+app.post('/user/updateShoppingCart', async (req, res) => {
+    const {_id, shoppingCarts} = req.body;
+
+    let basket = await ShoppingCartModel.findOne({_id});
+    if (!basket) {
+        ShoppingCartModel.create(req.body)
+            .then(basket => {
+                res.json(basket);
+            })
+            .catch(err => {
+                res.json(err);
+            });
+    } else {
+        const updated = {
+            shoppingCarts: shoppingCarts,
+        };
+        /*const updated = {
+            shoppingCarts: shoppingCarts[4],
+        };*/
+        await ShoppingCartModel.updateOne({_id}, {$set: updated})
+            .then(basket => {
+                res.json(basket);
+            })
+            .catch(err => {
+                res.json(err);
+            });
+    }
+});
+
+app.post('/user/getShoppingCartList', async (req, res) => {
+    const {_id} = req.body;
+
+    const existingRecord = await ShoppingCartModel.findOne({_id});
+
+    if (existingRecord) {
+        res.send(existingRecord);
+    }
 });
 
 app.listen(3000, () => {
