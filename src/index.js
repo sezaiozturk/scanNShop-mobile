@@ -2,8 +2,6 @@ import {Provider} from 'react-redux';
 import {store} from './redux/store';
 import {MD3LightTheme as DefaultTheme, PaperProvider} from 'react-native-paper';
 import Router from './router';
-import {View} from 'react-native';
-import {Company, Product} from './models/index';
 
 const theme = {
     ...DefaultTheme,
@@ -15,12 +13,18 @@ const theme = {
 
 const App = () => {
     return (
+        <PaperProvider theme={theme}>
+            <Router />
+        </PaperProvider>
+    );
+};
+
+const ContextApi = () => {
+    return (
         <Provider store={store}>
-            <PaperProvider theme={theme}>
-                <Router />
-            </PaperProvider>
+            <App />
         </Provider>
     );
 };
 
-export default App;
+export default ContextApi;

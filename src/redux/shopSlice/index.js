@@ -1,13 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
-import storage from '../../storage';
-import {useEffect} from 'react';
+
 const initialState = {
     shoppingCartList: [],
     basketTotal: 0,
 };
-const authUser = storage.getString('user');
-const {_id} = JSON.parse(authUser);
 
 export const shopSlice = createSlice({
     name: 'shop',
@@ -45,10 +42,18 @@ export const shopSlice = createSlice({
                     state.shoppingCartList[x].list[y].count += 1;
                 }
             }
-            axios.post('http://localhost:3000/user/updateShoppingCart', {
-                _id,
-                shoppingCarts: state.shoppingCartList,
-            });
+            axios.post(
+                'http://localhost:3000/user/updateShoppingCart',
+                {
+                    _id: action.payload.userId,
+                    shoppingCarts: state.shoppingCartList,
+                },
+                {
+                    headers: {
+                        'x-auth-token': action.payload.token,
+                    },
+                },
+            );
         },
         update: (state, action) => {
             let x = state.shoppingCartList.find(
@@ -70,10 +75,18 @@ export const shopSlice = createSlice({
             if (x.list.length === 0) {
                 state.shoppingCartList.splice(del, 1);
             }
-            axios.post('http://localhost:3000/user/updateShoppingCart', {
-                _id,
-                shoppingCarts: state.shoppingCartList,
-            });
+            axios.post(
+                'http://localhost:3000/user/updateShoppingCart',
+                {
+                    _id: action.payload.userId,
+                    shoppingCarts: state.shoppingCartList,
+                },
+                {
+                    headers: {
+                        'x-auth-token': action.payload.token,
+                    },
+                },
+            );
         },
         total: state => {
             state.basketTotal = 0;
@@ -84,7 +97,6 @@ export const shopSlice = createSlice({
             });
         },
         updateShoppingCartList: (state, action) => {
-            console.log(action.payload, 'redux');
             state.shoppingCartList = action.payload;
         },
     },

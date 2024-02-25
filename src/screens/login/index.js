@@ -67,9 +67,10 @@ const Login = () => {
             })
             .then(res => {
                 const user = res.data;
+                console.log(user);
                 if (user) {
                     const authToken = res.headers['x-auth-token'];
-                    storage.set('authToken', authToken);
+                    storage.set('accessToken', authToken);
                     storage.set('user', JSON.stringify(user));
                     handleRememberMe(email, password);
                     navigation.reset({

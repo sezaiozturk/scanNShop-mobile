@@ -5,3 +5,4 @@ export {default as TopBar} from './topBar';
 export {default as FlatButton} from './flatButton';
 export {default as ShopCard} from './shopCard';
 export {default as ShopDropdown} from './shopDropdown';
+export {default as Drawer} from './drawer';

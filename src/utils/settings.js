@@ -8,7 +8,7 @@ import {
     update,
     updateShoppingCartList,
 } from '../redux/shopSlice';
-import {changeAuth} from '../redux/authSlice';
+import {setAuthUser} from '../redux/authSlice';
 
 export const useColors = () => useSelector(({theme}) => theme.colors);
 export const useLanguage = () => useSelector(({locale}) => locale.locale);
@@ -26,6 +26,10 @@ export const updates = (id, companyId, price, count, operation) =>
     store.dispatch(update(id, companyId, price, count, operation));
 export const totals = () => store.dispatch(total());
 export const useBasketTotal = () => useSelector(({shop}) => shop.basketTotal);
-export const changeAuths = () => store.dispatch(changeAuth());
+export const setAuthUsers = (_id, name, email, token) =>
+    store.dispatch(setAuthUser(_id, name, email, token));
+export const useAuthUser = () => useSelector(({auth}) => auth.authUser);
+export const useToken = () => useSelector(({auth}) => auth.token);
+
 export const updateShoppingCartLists = shoppingCarts =>
     store.dispatch(updateShoppingCartList(shoppingCarts));

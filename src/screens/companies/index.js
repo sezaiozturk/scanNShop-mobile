@@ -1,10 +1,21 @@
-import {FlatList, SafeAreaView, Text} from 'react-native';
+import {
+    FlatList,
+    SafeAreaView,
+    Text,
+    View,
+    TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {CompanyCard, FlatButton} from '../../components';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import style from './stylesheet';
-import {useColors} from '../../utils/settings';
+import {
+    setAuthUsers,
+    totals,
+    updateShoppingCartLists,
+    useColors,
+} from '../../utils/settings';
 import {Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 import storage from '../../storage';
@@ -15,12 +26,15 @@ const Companies = () => {
     const [companies, setCompanies] = useState([]);
     const navigation = useNavigation();
     useEffect(() => {
+        getShoppingCart();
         getCompanies();
+        console.log('renderrr');
     }, []);
+
     const getCompanies = () => {
         let temp = [];
         axios
-            .post('http://172.31.8.32:3001/companies')
+            .post('http://10.38.246.49:3000/companies')
             .then(companies => {
                 companies.data.map(company => {
                     temp.push(company);
@@ -29,11 +43,50 @@ const Companies = () => {
             })
             .catch(err => console.log(err));
     };
+
+    const getShoppingCart = () => {
+        const authUser = storage.getString('user');
+        if (authUser) {
+            const token = storage.getString('accessToken');
+            let userId = JSON.parse(authUser)._id;
+            axios
+                .post(
+                    'http://localhost:3000/user/getShoppingCartList',
+                    {
+                        _id: userId,
+                    },
+                    {
+                        headers: {
+                            'x-auth-token': token,
+                        },
+                    },
+                )
+                .then(res => {
+                    console.log('girdi');
+                    const shoppingCarts = res.data.shoppingCarts;
+                    if (shoppingCarts) {
+                        updateShoppingCartLists(shoppingCarts);
+                        totals();
+                    }
+                });
+        }
+    };
+
     const renderItem = ({item}) => {
         return <CompanyCard name={item.companyName} id={item._id} />;
     };
     return (
         <SafeAreaView style={classes.container}>
+            <View style={classes.topBar}>
+                <TouchableOpacity
+                    style={classes.button}
+                    activeOpacity={0.5}
+                    onPress={() => {
+                        navigation.openDrawer();
+                    }}>
+                    <Icon name={'menu'} size={30} color={'green'} />
+                </TouchableOpacity>
+            </View>
             <FlatList
                 data={companies}
                 renderItem={renderItem}
@@ -47,15 +100,11 @@ const Companies = () => {
             <Button
                 style={{width: 50, backgroundColor: 'black', margin: 10}}
                 onPress={() => {
-                    /*storage.delete('user');
-                    storage.delete('authToken');
+                    storage.delete('user');
+                    storage.delete('accessToken');
                     navigation.reset({
                         index: 0,
                         routes: [{name: 'AuthStack'}],
-                    });*/
-                    axios.post('http://localhost:3000/user/deneme', {
-                        _id: '65d6a75743e65ebe5aa9edc1',
-                        shoppingCarts: [],
                     });
                 }}>
                 df

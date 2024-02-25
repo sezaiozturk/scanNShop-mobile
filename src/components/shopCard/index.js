@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import styles from './stylesheet';
 import React, {useState} from 'react';
 import {updates, useColors} from '../../utils/settings';
+import storage from '../../storage';
 
 const ShopCard = ({
     id,
@@ -17,29 +18,35 @@ const ShopCard = ({
     const colors = useColors();
     const classes = styles({colors});
     let operation;
+    const authUser = storage.getString('user');
+    const token = storage.getString('accessToken');
+    let userId = JSON.parse(authUser)._id;
 
     const increment = () => {
         operation = '+';
-        updates({id, companyId, price, count, operation});
+        updates({id, companyId, price, count, operation, userId, token});
     };
     const decrement = () => {
         if (count - 1 === 0) {
             operation = 'r';
-            updates({id, companyId, price, count, operation});
+            updates({id, companyId, price, count, operation, userId, token});
         } else {
             operation = '-';
-            updates({id, companyId, price, count, operation});
+            updates({id, companyId, price, count, operation, userId, token});
         }
     };
     const remove = () => {
         operation = 'r';
-        updates({id, companyId, price, count, operation});
+        updates({id, companyId, price, count, operation, userId, token});
     };
 
     return (
         <View style={classes.container} key={id}>
             <View style={classes.leftContainer}>
-                <Image src={image} style={classes.photo} />
+                <Image
+                    src={`http://localhost:3000/${image}`}
+                    style={classes.photo}
+                />
             </View>
             <View style={classes.rightContainer}>
                 <View style={classes.top}>

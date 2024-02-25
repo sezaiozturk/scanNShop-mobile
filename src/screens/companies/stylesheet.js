@@ -6,6 +6,12 @@ const style = ({colors}) => {
             backgroundColor: colors.secondary,
             flex: 1,
         },
+        topBar: {
+            backgroundColor: colors.secondary,
+            justifyContent: 'space-between',
+            marginHorizontal: 30,
+            flexDirection: 'row',
+        },
         column: {
             display: 'flex',
             gap: 20,
