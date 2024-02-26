@@ -66,8 +66,7 @@ const Login = () => {
                 password,
             })
             .then(res => {
-                const user = res.data;
-                console.log(user);
+                const user = res.data.user;
                 if (user) {
                     const authToken = res.headers['x-auth-token'];
                     storage.set('accessToken', authToken);
@@ -75,10 +74,10 @@ const Login = () => {
                     handleRememberMe(email, password);
                     navigation.reset({
                         index: 0,
-                        routes: [{name: 'CompaniesScreen'}],
+                        routes: [{name: 'HomeTab'}],
                     });
                 } else {
-                    showMessage(res.data);
+                    showMessage(res.data.message);
                 }
             })
             .catch(err => {

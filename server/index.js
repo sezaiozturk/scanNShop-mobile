@@ -135,14 +135,16 @@ app.post('/user/login', async (req, res) => {
     const {email, password} = req.body;
     let user = await UserModel.findOne({email: email});
 
-    if (!user) return res.send('hatalı şifre yada email');
+    if (!user)
+        return res.send({user: null, message: 'hatalı şifre yada email'});
 
     const isSuccess = await bcrypt.compare(password, user.password);
 
-    if (!isSuccess) return res.send('hatalı şifre yada email');
+    if (!isSuccess)
+        return res.send({user: null, message: 'hatalı şifre yada email'});
 
     const token = user.createAuthToken();
-    res.header('x-auth-token', token).send(user);
+    res.header('x-auth-token', token).send({user});
 });
 
 app.post('/user/updateShoppingCart', auth, async (req, res) => {
@@ -176,11 +178,12 @@ app.post('/user/updateShoppingCart', auth, async (req, res) => {
 
 app.post('/user/getShoppingCartList', auth, async (req, res) => {
     const {_id} = req.body;
-
     const existingRecord = await ShoppingCartModel.findOne({_id});
 
     if (existingRecord) {
         res.send(existingRecord);
+    } else {
+        res.send([]);
     }
 });
 

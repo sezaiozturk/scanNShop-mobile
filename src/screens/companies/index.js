@@ -1,21 +1,10 @@
-import {
-    FlatList,
-    SafeAreaView,
-    Text,
-    View,
-    TouchableOpacity,
-} from 'react-native';
+import {FlatList, SafeAreaView, View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {CompanyCard, FlatButton} from '../../components';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import style from './stylesheet';
-import {
-    setAuthUsers,
-    totals,
-    updateShoppingCartLists,
-    useColors,
-} from '../../utils/settings';
+import {totals, updateShoppingCartLists, useColors} from '../../utils/settings';
 import {Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 import storage from '../../storage';
@@ -28,13 +17,12 @@ const Companies = () => {
     useEffect(() => {
         getShoppingCart();
         getCompanies();
-        console.log('renderrr');
     }, []);
 
     const getCompanies = () => {
         let temp = [];
         axios
-            .post('http://10.38.246.49:3000/companies')
+            .post('http://172.31.4.163:3000/companies')
             .then(companies => {
                 companies.data.map(company => {
                     temp.push(company);
@@ -62,12 +50,13 @@ const Companies = () => {
                     },
                 )
                 .then(res => {
-                    console.log('girdi');
                     const shoppingCarts = res.data.shoppingCarts;
                     if (shoppingCarts) {
                         updateShoppingCartLists(shoppingCarts);
-                        totals();
+                    } else {
+                        updateShoppingCartLists([]);
                     }
+                    totals();
                 });
         }
     };
@@ -97,18 +86,6 @@ const Companies = () => {
                 columnWrapperStyle={classes.content}
             />
             <FlatButton />
-            <Button
-                style={{width: 50, backgroundColor: 'black', margin: 10}}
-                onPress={() => {
-                    storage.delete('user');
-                    storage.delete('accessToken');
-                    navigation.reset({
-                        index: 0,
-                        routes: [{name: 'AuthStack'}],
-                    });
-                }}>
-                df
-            </Button>
         </SafeAreaView>
     );
 };

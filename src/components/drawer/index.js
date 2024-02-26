@@ -7,6 +7,7 @@ import {
     DrawerItemList,
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import storage from '../../storage';
 
 const Drawer = props => {
     const colors = useSelector(({theme}) => theme.colors);
@@ -29,8 +30,13 @@ const Drawer = props => {
             <TouchableOpacity
                 style={classes.footer}
                 onPress={() => {
-                    auth().signOut();
-                    props.navigation.navigate('LoginScreen');
+                    //props.navigation.navigate('LoginScreen');
+                    storage.delete('user');
+                    storage.delete('accessToken');
+                    props.navigation.reset({
+                        index: 0,
+                        routes: [{name: 'AuthStack'}],
+                    });
                 }}>
                 <View style={{flexDirection: 'row', gap: 10}}>
                     <Text>

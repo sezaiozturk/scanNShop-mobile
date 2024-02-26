@@ -15,7 +15,7 @@ const style = ({colors}) => {
             borderRadius: 5,
             width: 'auto',
             marginTop: 10,
-            height: 200,
+            height: 150,
         },
         itemContainer: {
             backgroundColor: colors.secondary,
