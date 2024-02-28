@@ -2,7 +2,7 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useSelector} from 'react-redux';
 import styles from './stylesheet';
-import React, {useState} from 'react';
+import React from 'react';
 import {updates, useColors} from '../../utils/settings';
 import storage from '../../storage';
 

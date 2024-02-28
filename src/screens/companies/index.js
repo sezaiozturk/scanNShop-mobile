@@ -1,11 +1,10 @@
 import {FlatList, SafeAreaView, View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {CompanyCard, FlatButton} from '../../components';
+import {CompanyCard, FlatButton, TopBar} from '../../components';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import style from './stylesheet';
-import {totals, updateShoppingCartLists, useColors} from '../../utils/settings';
-import {Button} from 'react-native-paper';
+import {totals, getShoppingCartLists, useColors} from '../../utils/settings';
 import {useNavigation} from '@react-navigation/native';
 import storage from '../../storage';
 
@@ -22,9 +21,9 @@ const Companies = () => {
     const getCompanies = () => {
         let temp = [];
         axios
-            .post('http://172.31.4.163:3000/companies')
+            .post('http://10.38.246.49:3000/companies')
             .then(companies => {
-                companies.data.map(company => {
+                companies.data.forEach(company => {
                     temp.push(company);
                 });
                 setCompanies(temp);
@@ -39,7 +38,7 @@ const Companies = () => {
             let userId = JSON.parse(authUser)._id;
             axios
                 .post(
-                    'http://localhost:3000/user/getShoppingCartList',
+                    'http://localhost:3000/user/getShoppingCart',
                     {
                         _id: userId,
                     },
@@ -52,9 +51,9 @@ const Companies = () => {
                 .then(res => {
                     const shoppingCarts = res.data.shoppingCarts;
                     if (shoppingCarts) {
-                        updateShoppingCartLists(shoppingCarts);
+                        getShoppingCartLists(shoppingCarts);
                     } else {
-                        updateShoppingCartLists([]);
+                        getShoppingCartLists([]);
                     }
                     totals();
                 });
@@ -66,16 +65,12 @@ const Companies = () => {
     };
     return (
         <SafeAreaView style={classes.container}>
-            <View style={classes.topBar}>
-                <TouchableOpacity
-                    style={classes.button}
-                    activeOpacity={0.5}
-                    onPress={() => {
-                        navigation.openDrawer();
-                    }}>
-                    <Icon name={'menu'} size={30} color={'green'} />
-                </TouchableOpacity>
-            </View>
+            <TopBar
+                leftOne={{
+                    name: 'menu',
+                    onPress: () => navigation.openDrawer(),
+                }}
+            />
             <FlatList
                 data={companies}
                 renderItem={renderItem}
@@ -89,4 +84,5 @@ const Companies = () => {
         </SafeAreaView>
     );
 };
+
 export default Companies;

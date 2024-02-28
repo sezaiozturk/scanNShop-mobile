@@ -18,9 +18,9 @@ const Products = ({navigation, route}) => {
     const getProducts = () => {
         let temp = [];
         axios
-            .post('http://172.31.4.163:3000/admin/find', {companyId: id})
+            .post('http://10.38.246.49:3000/admin/find', {companyId: id})
             .then(products => {
-                products.data.map(product => {
+                products.data.forEach(product => {
                     temp.push(product);
                 });
                 setProducts(temp);
@@ -48,13 +48,6 @@ const Products = ({navigation, route}) => {
                         navigation.navigate('BarcodScannerScreen', {
                             productList: products,
                         });
-
-                        /*if (hasPermission) {
-                            navigation.navigate('BarcodScannerScreen');
-                        } else {
-                            //requestPermission();
-                            navigation.navigate('BarcodScannerScreen');
-                        }*/
                     },
                 }}
             />

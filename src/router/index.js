@@ -9,6 +9,7 @@ import {
     ShoppingCart,
     Login,
     Signup,
+    PastShoppingCart,
 } from '../screens';
 import storage from '../storage';
 import {useEffect, useState} from 'react';
@@ -53,9 +54,10 @@ const HomeTab = () => {
             drawerContent={props => <Drawer {...props} />}
             screenOptions={{
                 headerShown: false,
+                drawerType: 'front',
                 drawerActiveBackgroundColor: colors.primary,
                 drawerActiveTintColor: colors.secondary,
-                drawerInactiveTintColor: colors.text,
+                drawerInactiveTintColor: colors.primary,
                 drawerLabelStyle: {
                     fontFamily: 'Alegreya-Medium',
                     marginLeft: -20,
@@ -67,12 +69,28 @@ const HomeTab = () => {
                 component={HomeStack}
                 options={{
                     title: 'Home',
-                    drawerIcon: () => (
+                    drawerIcon: ({focused}) => (
                         <Text>
                             <Icon
                                 name={'map-outline'}
                                 size={24}
-                                color={colors.icon}
+                                color={focused ? colors.white : colors.primary}
+                            />
+                        </Text>
+                    ),
+                }}
+            />
+            <DrawerNav.Screen
+                name="PastChoppingCartsScreen"
+                component={PastShoppingCart}
+                options={{
+                    title: 'Past Shopping Carts',
+                    drawerIcon: ({focused}) => (
+                        <Text>
+                            <Icon
+                                name={'clock-outline'}
+                                size={24}
+                                color={focused ? colors.white : colors.primary}
                             />
                         </Text>
                     ),

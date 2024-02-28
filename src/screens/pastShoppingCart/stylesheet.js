@@ -6,15 +6,6 @@ const style = ({colors}) => {
             backgroundColor: colors.secondary,
             flex: 1,
         },
-        column: {
-            display: 'flex',
-            gap: 20,
-            flex: 1,
-        },
-        content: {
-            justifyContent: 'space-evenly',
-            display: 'flex',
-        },
     });
 };
 export default style;

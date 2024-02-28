@@ -10,6 +10,7 @@ const ProductModel = require('./models/Product');
 const UserModel = require('./models/User');
 const auth = require('./middleware/auth');
 const ShoppingCartModel = require('./models/ShoppingCart');
+const PastShoppingCartModel = require('./models/PastShoppingCarts');
 
 app.use(cors());
 app.use(express.json());
@@ -163,9 +164,6 @@ app.post('/user/updateShoppingCart', auth, async (req, res) => {
         const updated = {
             shoppingCarts: shoppingCarts,
         };
-        /*const updated = {
-            shoppingCarts: shoppingCarts[4],
-        };*/
         await ShoppingCartModel.updateOne({_id}, {$set: updated})
             .then(basket => {
                 res.json(basket);
@@ -176,7 +174,7 @@ app.post('/user/updateShoppingCart', auth, async (req, res) => {
     }
 });
 
-app.post('/user/getShoppingCartList', auth, async (req, res) => {
+app.post('/user/getShoppingCart', auth, async (req, res) => {
     const {_id} = req.body;
     const existingRecord = await ShoppingCartModel.findOne({_id});
 
@@ -184,6 +182,36 @@ app.post('/user/getShoppingCartList', auth, async (req, res) => {
         res.send(existingRecord);
     } else {
         res.send([]);
+    }
+});
+
+app.post('/user/pay', auth, async (req, res) => {
+    const {_id, shoppingCarts} = req.body;
+    let basket = await PastShoppingCartModel.findOne({_id});
+
+    if (!basket) {
+        PastShoppingCartModel.create({
+            _id,
+            pastShoppingCarts: [{shoppingCarts}],
+        })
+            .then(basket => {
+                res.json(basket);
+            })
+            .catch(err => {
+                res.json(err);
+            });
+    } else {
+        await PastShoppingCartModel.findByIdAndUpdate(
+            {_id},
+            {$push: {pastShoppingCarts: [{shoppingCarts}]}},
+            {new: true},
+        )
+            .then(basket => {
+                res.json(basket);
+            })
+            .catch(err => {
+                res.json(err);
+            });
     }
 });
 

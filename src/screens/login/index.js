@@ -1,6 +1,12 @@
 import {SafeAreaView, Image, View, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from './stylesheet';
+import storage from '../../storage';
+import {changeAuths, useColors} from '../../utils/settings';
+import {useNavigation} from '@react-navigation/native';
+import axios from 'axios';
+import {Formik} from 'formik';
+import {loginSchema} from '../validationSchema';
 import {
     Button,
     TextInput,
@@ -10,12 +16,6 @@ import {
     HelperText,
     Snackbar,
 } from 'react-native-paper';
-import storage from '../../storage';
-import {changeAuths, useColors} from '../../utils/settings';
-import {useNavigation} from '@react-navigation/native';
-import axios from 'axios';
-import {Formik} from 'formik';
-import {loginSchema} from '../validationSchema';
 
 const Login = () => {
     const [checked, setChecked] = useState(false);
@@ -202,4 +202,5 @@ const Login = () => {
         </SafeAreaView>
     );
 };
+
 export default Login;

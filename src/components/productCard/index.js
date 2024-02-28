@@ -22,24 +22,6 @@ const ProductCard = ({companyName, product, index}) => {
     const authUser = storage.getString('user');
     const token = storage.getString('accessToken');
     let userId = JSON.parse(authUser)._id;
-    let name = JSON.parse(authUser).name;
-    let email = JSON.parse(authUser).email;
-
-    /*const saveDatabase = dataList => {
-        if (realmProducts.length > 0) {
-            realm.write(() => {
-                realm.delete(realmProducts);
-            });
-        }
-        /*realm.write(() => {
-                realm.create('Company', {
-                    id: parseInt(item.id),
-                    image: item.image,
-                    title: item.title,
-                    price: parseFloat(item.price),
-                });
-            });
-    };*/
 
     return (
         <View style={[classes.container, {backgroundColor}]}>

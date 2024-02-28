@@ -90,8 +90,3 @@ const BarcodScanner = ({navigation, route}) => {
     );
 };
 export default BarcodScanner;
-
-/**
- *
- *
- */

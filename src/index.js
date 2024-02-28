@@ -13,18 +13,12 @@ const theme = {
 
 const App = () => {
     return (
-        <PaperProvider theme={theme}>
-            <Router />
-        </PaperProvider>
-    );
-};
-
-const ContextApi = () => {
-    return (
         <Provider store={store}>
-            <App />
+            <PaperProvider theme={theme}>
+                <Router />
+            </PaperProvider>
         </Provider>
     );
 };
 
-export default ContextApi;
+export default App;

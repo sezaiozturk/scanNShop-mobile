@@ -1,19 +1,18 @@
 import {SafeAreaView, Image, View, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from './stylesheet';
-import {
-    Button,
-    TextInput,
-    Checkbox,
-    Text,
-    useTheme,
-    HelperText,
-} from 'react-native-paper';
 import {useColors} from '../../utils/settings';
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
 import {signupSchema} from '../validationSchema';
 import axios from 'axios';
+import {
+    Button,
+    TextInput,
+    Text,
+    useTheme,
+    HelperText,
+} from 'react-native-paper';
 
 const Signup = () => {
     const [secureTextEntry, setSecureTextEntry] = useState(true);
@@ -184,4 +183,5 @@ const Signup = () => {
         </SafeAreaView>
     );
 };
+
 export default Signup;

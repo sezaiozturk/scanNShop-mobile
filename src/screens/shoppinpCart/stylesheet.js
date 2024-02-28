@@ -6,14 +6,8 @@ const style = ({colors}) => {
             backgroundColor: colors.secondary,
             flex: 1,
         },
-        column: {
-            display: 'flex',
-            gap: 20,
-            flex: 1,
-        },
         content: {
             justifyContent: 'space-evenly',
-            display: 'flex',
         },
         totalContainer: {
             flexDirection: 'row',
@@ -42,6 +36,16 @@ const style = ({colors}) => {
             fontFamily: 'Alegreya-Bold',
             fontSize: 20,
             marginBottom: 4,
+        },
+        emptyShoppingCart: {
+            alignItems: 'center',
+            paddingVertical: 100,
+        },
+        empty: {
+            fontFamily: 'Alegreya-Medium',
+            color: colors.primary,
+            marginTop: 20,
+            fontSize: 20,
         },
     });
 };

@@ -30,7 +30,6 @@ const Drawer = props => {
             <TouchableOpacity
                 style={classes.footer}
                 onPress={() => {
-                    //props.navigation.navigate('LoginScreen');
                     storage.delete('user');
                     storage.delete('accessToken');
                     props.navigation.reset({
