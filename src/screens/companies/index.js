@@ -21,7 +21,7 @@ const Companies = () => {
     const getCompanies = () => {
         let temp = [];
         axios
-            .post('http://172.31.12.202:3000/companies')
+            .post('http://10.38.246.49:3000/companies')
             .then(companies => {
                 companies.data.forEach(company => {
                     temp.push(company);

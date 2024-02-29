@@ -1,6 +1,5 @@
 import {FlatList, SafeAreaView, TouchableOpacity, View} from 'react-native';
 import {EmptyCard, TopBar} from '../../components';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import style from './stylesheet';
 import {useColors} from '../../utils/settings';
 import storage from '../../storage';

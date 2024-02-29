@@ -1,12 +1,5 @@
-import {
-    SafeAreaView,
-    Text,
-    View,
-    ScrollView,
-    TouchableOpacity,
-} from 'react-native';
+import {SafeAreaView, Text, View, ScrollView} from 'react-native';
 import {EmptyCard, ShopDropdown, TopBar} from '../../components';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import style from './stylesheet';
 import {
     pays,
