@@ -215,6 +215,17 @@ app.post('/user/pay', auth, async (req, res) => {
     }
 });
 
+app.post('/user/getPastShoppingCart', auth, async (req, res) => {
+    const {_id} = req.body;
+    const existingRecord = await PastShoppingCartModel.findOne({_id});
+
+    if (existingRecord) {
+        res.send(existingRecord);
+    } else {
+        res.send([]);
+    }
+});
+
 app.listen(3000, () => {
     console.log('listening on port 3000');
 });

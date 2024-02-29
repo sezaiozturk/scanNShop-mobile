@@ -37,16 +37,6 @@ const style = ({colors}) => {
             fontSize: 20,
             marginBottom: 4,
         },
-        emptyShoppingCart: {
-            alignItems: 'center',
-            paddingVertical: 100,
-        },
-        empty: {
-            fontFamily: 'Alegreya-Medium',
-            color: colors.primary,
-            marginTop: 20,
-            fontSize: 20,
-        },
     });
 };
 export default style;

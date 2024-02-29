@@ -5,7 +5,7 @@ import {
     ScrollView,
     TouchableOpacity,
 } from 'react-native';
-import {ShopDropdown, TopBar} from '../../components';
+import {EmptyCard, ShopDropdown, TopBar} from '../../components';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import style from './stylesheet';
 import {
@@ -57,18 +57,11 @@ const ShoppingCart = () => {
                         );
                     })
                 ) : (
-                    <TouchableOpacity
-                        style={classes.emptyShoppingCart}
-                        activeOpacity={0.6}
-                        onPress={() => navigation.navigate('CompaniesScreen')}>
-                        <Icon
-                            name={'cart-outline'}
-                            color={colors.primary}
-                            size={100}
-                        />
-                        <Text style={classes.empty}>Empty cart.</Text>
-                        <Text style={classes.empty}>Start shopping.</Text>
-                    </TouchableOpacity>
+                    <EmptyCard
+                        icon={'cart-outline'}
+                        title={'Empty Cart'}
+                        subTitle={'Start Shopping'}
+                    />
                 )}
             </ScrollView>
             <View style={classes.totalContainer}>
