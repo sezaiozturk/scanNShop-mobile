@@ -18,7 +18,7 @@ const Products = ({navigation, route}) => {
     const getProducts = () => {
         let temp = [];
         axios
-            .post('http://10.38.246.49:3000/admin/find', {companyId: id})
+            .post('http://172.31.4.31:3000/admin/find', {companyId: id})
             .then(products => {
                 products.data.forEach(product => {
                     temp.push(product);
