@@ -1,16 +1,35 @@
-import {FlatList, SafeAreaView, TouchableOpacity, View} from 'react-native';
-import {EmptyCard, TopBar} from '../../components';
+import {
+    TouchableOpacity,
+    SafeAreaView,
+    FlatList,
+    View
+} from 'react-native';
+import {
+    EmptyCard,
+    TopBar
+} from '../../components';
 import style from './stylesheet';
-import {useColors} from '../../utils/settings';
+import {
+    useColors
+} from '../../utils/settings';
 import storage from '../../storage';
-import {useFocusEffect, useNavigation} from '@react-navigation/native';
-import React, {useState, useCallback} from 'react';
+import {
+    useFocusEffect, useNavigation
+} from '@react-navigation/native';
+import React, {
+    useState,
+    useCallback
+} from 'react';
 import axios from 'axios';
-import {Text} from 'react-native-paper';
+import {
+    Text
+} from 'react-native-paper';
 
 const PastShoppingCart = () => {
     const colors = useColors();
-    const classes = style({colors});
+    const classes = style({
+        colors
+    });
     const navigation = useNavigation();
     const [pastShoppingCarts, setPastShoppingCarts] = useState([]);
 
@@ -42,7 +61,9 @@ const PastShoppingCart = () => {
         }, []),
     );
 
-    const renderItem = ({item}) => (
+    const renderItem = ({
+        item
+    }) => (
         <View style={classes.invoiceContainer}>
             {item.shoppingCarts.map((company, index) => (
                 <View key={index}>
@@ -57,7 +78,9 @@ const PastShoppingCart = () => {
                                 <Text
                                     style={[
                                         classes.text,
-                                        {marginHorizontal: 5},
+                                        {
+                                            marginHorizontal: 5
+                                        },
                                     ]}>
                                     x
                                 </Text>
@@ -66,11 +89,16 @@ const PastShoppingCart = () => {
                             <Text style={classes.text}>{basket.price}</Text>
                         </View>
                     ))}
-                    <View style={[classes.row, {paddingVertical: 4}]}>
+                    <View style={[classes.row, {
+                        paddingVertical: 4
+                    }]}>
                         <Text style={classes.title}>Total :</Text>
                         <Text style={classes.title}>
                             {company.list.reduce(
-                                (total, {price, count}) =>
+                                (total, {
+                                    price,
+                                    count
+                                }) =>
                                     total + price * count,
                                 0,
                             )}
@@ -93,7 +121,10 @@ const PastShoppingCart = () => {
             <FlatList
                 data={pastShoppingCarts}
                 renderItem={renderItem}
-                ItemSeparatorComponent={<View style={{height: 8}} />}
+                ItemSeparatorComponent={<View style={{
+                    height: 8
+                }}
+                />}
                 ListEmptyComponent={
                     <EmptyCard
                         icon={'history'}

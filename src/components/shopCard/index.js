@@ -1,9 +1,18 @@
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {
+    Image,
+    Text,
+    TouchableOpacity,
+    View
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useSelector} from 'react-redux';
+import {
+    useSelector
+} from 'react-redux';
 import styles from './stylesheet';
 import React from 'react';
-import {updates, useColors} from '../../utils/settings';
+import {
+    updates, useColors
+} from '../../utils/settings';
 import storage from '../../storage';
 
 const ShopCard = ({
@@ -14,9 +23,13 @@ const ShopCard = ({
     image,
     count,
 }) => {
-    const typography = useSelector(({theme}) => theme.typography);
+    const typography = useSelector(({
+        theme
+    }) => theme.typography);
     const colors = useColors();
-    const classes = styles({colors});
+    const classes = styles({
+        colors
+    });
     let operation;
     const authUser = storage.getString('user');
     const token = storage.getString('accessToken');
@@ -24,20 +37,52 @@ const ShopCard = ({
 
     const increment = () => {
         operation = '+';
-        updates({id, companyId, price, count, operation, userId, token});
+        updates({
+            operation,
+            companyId,
+            userId,
+            count,
+            price,
+            token,
+            id
+        });
     };
     const decrement = () => {
         if (count - 1 === 0) {
             operation = 'r';
-            updates({id, companyId, price, count, operation, userId, token});
+            updates({
+                operation,
+                companyId,
+                price,
+                userId,
+                token,
+                count,
+                id,
+            });
         } else {
             operation = '-';
-            updates({id, companyId, price, count, operation, userId, token});
+            updates({
+                companyId,
+                operation,
+                userId,
+                token,
+                price,
+                count,
+                id,
+            });
         }
     };
     const remove = () => {
         operation = 'r';
-        updates({id, companyId, price, count, operation, userId, token});
+        updates({
+            companyId,
+            operation,
+            userId,
+            price,
+            count,
+            token,
+            id,
+        });
     };
 
     return (

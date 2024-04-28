@@ -1,12 +1,29 @@
-import {SafeAreaView, Image, View, TouchableOpacity} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {
+    SafeAreaView,
+    Image,
+    View,
+    TouchableOpacity
+} from 'react-native';
+import React, {
+    useEffect,
+    useState
+} from 'react';
 import styles from './stylesheet';
 import storage from '../../storage';
-import {changeAuths, useColors} from '../../utils/settings';
-import {useNavigation} from '@react-navigation/native';
+import {
+    changeAuths,
+    useColors
+} from '../../utils/settings';
+import {
+    useNavigation
+} from '@react-navigation/native';
 import axios from 'axios';
-import {Formik} from 'formik';
-import {loginSchema} from '../validationSchema';
+import {
+    Formik
+} from 'formik';
+import {
+    loginSchema
+} from '../validationSchema';
 import {
     Button,
     TextInput,
@@ -24,7 +41,10 @@ const Login = () => {
     const theme = useTheme();
     const colors = useColors();
     const navigation = useNavigation();
-    const [rememberUser, setRememberUser] = useState({email: '', password: ''});
+    const [rememberUser, setRememberUser] = useState({
+        email: '',
+        password: ''
+    });
     const [message, setMessage] = useState('');
     const [snackVisible, setSnackVisible] = useState(false);
 
@@ -59,9 +79,11 @@ const Login = () => {
         }
     };
 
-    const handleLogin = ({email, password}) => {
+    const handleLogin = ({
+        email, password
+    }) => {
         axios
-            .post('http://localhost:3000/user/login', {
+            .post('http://172.29.16.82:3000/user/login', {
                 email,
                 password,
             })
@@ -74,7 +96,9 @@ const Login = () => {
                     handleRememberMe(email, password);
                     navigation.reset({
                         index: 0,
-                        routes: [{name: 'HomeTab'}],
+                        routes: [{
+                            name: 'HomeTab'
+                        }],
                     });
                 } else {
                     showMessage(res.data.message);
@@ -175,7 +199,9 @@ const Login = () => {
                         <Button
                             mode="contained"
                             onPress={handleSubmit}
-                            style={{marginTop: 40}}>
+                            style={{
+                                marginTop: 40
+                            }}>
                             Login
                         </Button>
                         <TouchableOpacity
@@ -186,7 +212,10 @@ const Login = () => {
                             </Text>
                             <Text
                                 variant="titleMedium"
-                                style={{color: colors.primary, marginLeft: 15}}>
+                                style={{
+                                    color: colors.primary,
+                                    marginLeft: 15
+                                }}>
                                 Signup
                             </Text>
                         </TouchableOpacity>
@@ -196,7 +225,8 @@ const Login = () => {
             <Snackbar
                 visible={snackVisible}
                 duration={1500}
-                onDismiss={toggleSnack}>
+                onDismiss={toggleSnack}
+            >
                 {message}
             </Snackbar>
         </SafeAreaView>

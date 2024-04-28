@@ -1,6 +1,13 @@
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {
+    TouchableOpacity,
+    Image,
+    Text,
+    View
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useSelector} from 'react-redux';
+import {
+    useSelector
+} from 'react-redux';
 import styles from './stylesheet';
 import React from 'react';
 import {
@@ -12,10 +19,18 @@ import {
 } from '../../utils/settings';
 import storage from '../../storage';
 
-const ProductCard = ({companyName, product, index}) => {
-    const typography = useSelector(({theme}) => theme.typography);
+const ProductCard = ({
+    companyName,
+    product,
+    index
+}) => {
+    const typography = useSelector(({
+        theme
+    }) => theme.typography);
     const colors = useColors();
-    const classes = styles({colors});
+    const classes = styles({
+        colors
+    });
     const backgroundColor = index % 2 === 0 ? '#55D968' : 'white';
     const plus = index % 2 === 0 ? 'white' : '#55D968';
 
@@ -24,7 +39,11 @@ const ProductCard = ({companyName, product, index}) => {
     let userId = JSON.parse(authUser)._id;
 
     return (
-        <View style={[classes.container, {backgroundColor}]}>
+        <View
+            style={[classes.container, {
+                backgroundColor
+            }]}
+        >
             <View style={classes.leftContainer}>
                 <Image
                     style={classes.image}
@@ -39,7 +58,12 @@ const ProductCard = ({companyName, product, index}) => {
                 style={classes.add}
                 activeOpacity={0.5}
                 onPress={() => {
-                    addProducts({companyName, ...product, userId, token});
+                    addProducts({
+                        companyName,
+                        ...product,
+                        userId,
+                        token
+                    });
                     totals();
                 }}>
                 <Icon name="plus-circle" color={plus} size={26} />

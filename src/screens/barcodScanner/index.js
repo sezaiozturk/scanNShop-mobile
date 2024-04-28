@@ -1,21 +1,41 @@
-import {SafeAreaView, Text, View, TouchableOpacity} from 'react-native';
+import {
+    TouchableOpacity,
+    SafeAreaView,
+    Text,
+    View,
+} from 'react-native';
 import style from './stylesheet';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useColors} from '../../utils/settings';
+import {
+    useColors
+} from '../../utils/settings';
 import {
     Camera,
     useCameraDevice,
     useCameraPermission,
     useCodeScanner,
 } from 'react-native-vision-camera';
-import {useEffect, useState} from 'react';
+import {
+    useEffect,
+    useState
+} from 'react';
 
-const BarcodScanner = ({navigation, route}) => {
+const BarcodScanner = ({
+    navigation,
+    route
+}) => {
     const colors = useColors();
-    const classes = style({colors});
-    const {hasPermission, requestPermission} = useCameraPermission();
+    const classes = style({
+        colors
+    });
+    const {
+        hasPermission,
+        requestPermission
+    } = useCameraPermission();
     console.log(hasPermission);
-    const {productList} = route.params;
+    const {
+        productList
+    } = route.params;
     const [name, setName] = useState('Ürün Adı');
     const [price, setPrice] = useState(0);
 
@@ -53,7 +73,9 @@ const BarcodScanner = ({navigation, route}) => {
 
     return (
         <View style={classes.container}>
-            <View style={{flex: 1}}>
+            <View style={{
+                flex: 1
+            }}>
                 <Camera
                     style={classes.camera}
                     device={device}

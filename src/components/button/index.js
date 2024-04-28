@@ -1,9 +1,17 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {
+    useColors
+} from '../../utils/settings';
+import {
+    TouchableOpacity,
+    View,
+    Text
+} from 'react-native';
+import {
+    useSelector
+} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useSelector} from 'react-redux';
 import styles from './stylesheet';
 import React from 'react';
-import {useColors} from '../../utils/settings';
 
 const Button = ({
     spreadBehavior = 'stretch',
@@ -17,9 +25,13 @@ const Button = ({
     icon,
     loading,
 }) => {
-    const typography = useSelector(({theme}) => theme.typography);
+    const typography = useSelector(({
+        theme
+    }) => theme.typography);
     const colors = useColors();
-    const classes = styles({colors});
+    const classes = styles({
+        colors
+    });
     return (
         <View>
             <TouchableOpacity
@@ -27,9 +39,16 @@ const Button = ({
                 disabled={disabled || loading}
                 style={[
                     classes[variant].container,
-                    (disabled || loading) && {opacity: 0.6},
-                    {alignSelf: spreadBehavior},
-                    reverse && {flexDirection: 'row-reverse'},
+                    (disabled || loading) &&
+                    {
+                        opacity: 0.6
+                    },
+                    {
+                        alignSelf: spreadBehavior
+                    },
+                    reverse && {
+                        flexDirection: 'row-reverse'
+                    },
                 ]}>
                 {loading && (
                     <Text>

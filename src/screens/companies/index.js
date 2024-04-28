@@ -1,16 +1,36 @@
-import {FlatList, SafeAreaView, View, TouchableOpacity} from 'react-native';
+import {
+    TouchableOpacity,
+    SafeAreaView,
+    FlatList,
+    View,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {CompanyCard, FlatButton, TopBar} from '../../components';
+import {
+    CompanyCard,
+    FlatButton,
+    TopBar
+} from '../../components';
 import axios from 'axios';
-import {useEffect, useState} from 'react';
+import {
+    useEffect,
+    useState
+} from 'react';
 import style from './stylesheet';
-import {totals, getShoppingCartLists, useColors} from '../../utils/settings';
-import {useNavigation} from '@react-navigation/native';
+import {
+    getShoppingCartLists,
+    useColors,
+    totals
+} from '../../utils/settings';
+import {
+    useNavigation
+} from '@react-navigation/native';
 import storage from '../../storage';
 
 const Companies = () => {
     const colors = useColors();
-    const classes = style({colors});
+    const classes = style({
+        colors
+    });
     const [companies, setCompanies] = useState([]);
     const navigation = useNavigation();
     useEffect(() => {
@@ -21,7 +41,7 @@ const Companies = () => {
     const getCompanies = () => {
         let temp = [];
         axios
-            .post('http://172.31.4.31:3000/companies')
+            .post('http://172.29.16.82:3000/companies')
             .then(companies => {
                 companies.data.forEach(company => {
                     temp.push(company);
@@ -60,7 +80,9 @@ const Companies = () => {
         }
     };
 
-    const renderItem = ({item}) => {
+    const renderItem = ({
+        item
+    }) => {
         return <CompanyCard name={item.companyName} id={item._id} />;
     };
     return (
@@ -76,7 +98,9 @@ const Companies = () => {
                 renderItem={renderItem}
                 keyExtractor={item => item._id}
                 numColumns={2}
-                style={{marginTop: 40}}
+                style={{
+                    marginTop: 40
+                }}
                 contentContainerStyle={classes.column}
                 columnWrapperStyle={classes.content}
             />

@@ -1,4 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {
+    createSlice
+} from '@reduxjs/toolkit';
 import themes from '../../themes';
 
 let currentTheme = 'light';
@@ -24,6 +26,9 @@ export const themeSlice = createSlice({
         },
     },
 });
-export const {change, changeTheme} = themeSlice.actions;
+export const {
+    changeTheme,
+    change
+} = themeSlice.actions;
 
 export default themeSlice.reducer;

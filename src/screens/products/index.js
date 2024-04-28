@@ -1,15 +1,35 @@
-import {FlatList, SafeAreaView} from 'react-native';
-import {FlatButton, ProductCard, TopBar} from '../../components';
+import {
+    FlatList,
+    SafeAreaView
+} from 'react-native';
+import {
+    FlatButton,
+    ProductCard,
+    TopBar
+} from '../../components';
 import axios from 'axios';
-import {useEffect, useState} from 'react';
+import {
+    useEffect,
+    useState
+} from 'react';
 import style from './stylesheet';
-import {useColors} from '../../utils/settings';
+import {
+    useColors
 
-const Products = ({navigation, route}) => {
+} from '../../utils/settings';
+const Products = ({
+    navigation,
+    route
+}) => {
     const colors = useColors();
-    const classes = style({colors});
+    const classes = style({
+        colors
+    });
     const [products, setProducts] = useState([]);
-    const {id, name} = route.params;
+    const {
+        id,
+        name
+    } = route.params;
 
     useEffect(() => {
         getProducts();
@@ -18,7 +38,9 @@ const Products = ({navigation, route}) => {
     const getProducts = () => {
         let temp = [];
         axios
-            .post('http://172.31.4.31:3000/admin/find', {companyId: id})
+            .post('http://172.29.16.82:3000/admin/find', {
+                companyId: id
+            })
             .then(products => {
                 products.data.forEach(product => {
                     temp.push(product);
@@ -27,7 +49,10 @@ const Products = ({navigation, route}) => {
             })
             .catch(err => console.log(err));
     };
-    const renderItem = ({item, index}) => {
+    const renderItem = ({
+        item,
+        index
+    }) => {
         return <ProductCard companyName={name} product={item} index={index} />;
     };
     return (

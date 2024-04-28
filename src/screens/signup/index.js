@@ -1,10 +1,26 @@
-import {SafeAreaView, Image, View, TouchableOpacity} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {
+    TouchableOpacity,
+    SafeAreaView,
+    Image,
+    View,
+} from 'react-native';
+import React, {
+    useEffect,
+    useState
+} from 'react';
 import styles from './stylesheet';
-import {useColors} from '../../utils/settings';
-import {useNavigation} from '@react-navigation/native';
-import {Formik} from 'formik';
-import {signupSchema} from '../validationSchema';
+import {
+    useColors
+} from '../../utils/settings';
+import {
+    useNavigation
+} from '@react-navigation/native';
+import {
+    Formik
+} from 'formik';
+import {
+    signupSchema
+} from '../validationSchema';
 import axios from 'axios';
 import {
     Button,
@@ -29,7 +45,11 @@ const Signup = () => {
         setSecureTextEntry2(!secureTextEntry2);
     };
 
-    const handleSignup = ({name, email, password}) => {
+    const handleSignup = ({
+        name,
+        email,
+        password
+    }) => {
         axios
             .post('http://localhost:3000/user/signup', {
                 name,
@@ -127,7 +147,8 @@ const Signup = () => {
                                 errors.password && touched.password
                                     ? true
                                     : false
-                            }>
+                            }
+                        >
                             {errors.password}
                         </HelperText>
                         <TextInput
@@ -153,7 +174,7 @@ const Signup = () => {
                             type="error"
                             visible={
                                 errors.confirmPassword &&
-                                touched.confirmPassword
+                                    touched.confirmPassword
                                     ? true
                                     : false
                             }>
@@ -162,7 +183,9 @@ const Signup = () => {
                         <Button
                             mode="contained"
                             onPress={handleSubmit}
-                            style={{marginTop: 20}}>
+                            style={{
+                                marginTop: 20
+                            }}>
                             Signup
                         </Button>
                         <TouchableOpacity
@@ -173,7 +196,9 @@ const Signup = () => {
                             </Text>
                             <Text
                                 variant="titleMedium"
-                                style={{color: colors.primary, marginLeft: 15}}>
+                                style={{
+                                    color: colors.primary, marginLeft: 15
+                                }}>
                                 Login
                             </Text>
                         </TouchableOpacity>

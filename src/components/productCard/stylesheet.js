@@ -1,6 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {
+    StyleSheet
+} from 'react-native';
 
-const style = ({colors}) => {
+const style = ({
+    colors
+}) => {
     return StyleSheet.create({
         container: {
             justifyContent: 'space-between',

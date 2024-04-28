@@ -1,6 +1,13 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+    createNativeStackNavigator
+} from '@react-navigation/native-stack';
+import {
+    createDrawerNavigator
+} from '@react-navigation/drawer';
+import {
+
+    NavigationContainer
+} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
     BarcodScanner,
@@ -12,10 +19,19 @@ import {
     PastShoppingCart,
 } from '../screens';
 import storage from '../storage';
-import {useEffect, useState} from 'react';
-import {useColors} from '../utils/settings';
-import {Drawer} from '../components';
-import {Text} from 'react-native-paper';
+import {
+    useEffect,
+    useState
+} from 'react';
+import {
+    useColors
+} from '../utils/settings';
+import {
+    Drawer
+} from '../components';
+import {
+    Text
+} from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
 const DrawerNav = createDrawerNavigator();
@@ -39,7 +55,9 @@ const HomeStack = () => {
 
 const AuthStack = () => {
     return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Navigator screenOptions={{
+            headerShown: false
+        }}>
             <Stack.Screen name="LoginScreen" component={Login} />
             <Stack.Screen name="SignupScreen" component={Signup} />
         </Stack.Navigator>
@@ -69,7 +87,9 @@ const HomeTab = () => {
                 component={HomeStack}
                 options={{
                     title: 'Home',
-                    drawerIcon: ({focused}) => (
+                    drawerIcon: ({
+                        focused
+                    }) => (
                         <Text>
                             <Icon
                                 name={'map-outline'}
@@ -85,7 +105,9 @@ const HomeTab = () => {
                 component={PastShoppingCart}
                 options={{
                     title: 'Past Shopping Carts',
-                    drawerIcon: ({focused}) => (
+                    drawerIcon: ({
+                        focused
+                    }) => (
                         <Text>
                             <Icon
                                 name={'clock-outline'}
@@ -120,12 +142,16 @@ const Router = () => {
         <NavigationContainer>
             {initial != null ? (
                 <Stack.Navigator
-                    screenOptions={{headerShown: false}}
+                    screenOptions={{
+                        headerShown: false
+                    }}
                     initialRouteName={initial}>
                     <Stack.Screen name="AuthStack" component={AuthStack} />
                     <Stack.Screen
                         name="HomeTab"
-                        component={HomeTab}></Stack.Screen>
+                        component={HomeTab}
+                    >
+                    </Stack.Screen>
                 </Stack.Navigator>
             ) : null}
         </NavigationContainer>

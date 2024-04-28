@@ -1,9 +1,16 @@
-import {StyleSheet} from 'react-native';
+import {
+    StyleSheet
+} from 'react-native';
 
-const style = ({colors}) => {
+const style = ({
+    colors
+}) => {
     return StyleSheet.create({
         container: {
-            shadowOffset: {width: 2, height: 4},
+            shadowOffset: {
+                width: 2,
+                height: 4
+            },
             justifyContent: 'center',
             backgroundColor: 'white',
             alignItems: 'center',

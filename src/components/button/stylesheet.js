@@ -1,6 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {
+    StyleSheet
+} from 'react-native';
 
-const style = ({colors}) => {
+const style = ({
+    colors
+}) => {
     const base_style = StyleSheet.create({
         container: {
             justifyContent: 'center',

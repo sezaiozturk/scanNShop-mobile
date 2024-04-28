@@ -1,6 +1,12 @@
-import {Provider} from 'react-redux';
-import {store} from './redux/store';
-import {MD3LightTheme as DefaultTheme, PaperProvider} from 'react-native-paper';
+import {
+    Provider
+} from 'react-redux';
+import {
+    store
+} from './redux/store';
+import {
+    MD3LightTheme as DefaultTheme, PaperProvider
+} from 'react-native-paper';
 import Router from './router';
 
 const theme = {

@@ -1,4 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {
+    createSlice
+} from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
@@ -142,7 +144,13 @@ export const shopSlice = createSlice({
         },
     },
 });
-export const {addProduct, update, getShoppingCartList, total, pay} =
+export const {
+    getShoppingCartList,
+    addProduct,
+    update,
+    total,
+    pay
+} =
     shopSlice.actions;
 
 export default shopSlice.reducer;

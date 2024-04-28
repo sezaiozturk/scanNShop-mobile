@@ -1,4 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {
+    createSlice
+} from '@reduxjs/toolkit';
 import locales from '../../locales';
 
 let currentLocale = 'tr';
@@ -20,6 +22,8 @@ export const localeSlice = createSlice({
         },
     },
 });
-export const {changeLocale} = localeSlice.actions;
+export const {
+    changeLocale
+} = localeSlice.actions;
 
 export default localeSlice.reducer;

@@ -1,15 +1,36 @@
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {
+    TouchableOpacity,
+    Image,
+    Text,
+    View
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useSelector} from 'react-redux';
+import {
+    useSelector
+} from 'react-redux';
 import styles from './stylesheet';
-import React, {useState} from 'react';
-import {useColors} from '../../utils/settings';
-import {ShopCard} from '..';
+import React, {
+    useState
+} from 'react';
+import {
+    useColors
+} from '../../utils/settings';
+import {
+    ShopCard
+} from '..';
 
-const ShopDropdown = ({companyId, companyName, productList}) => {
-    const typography = useSelector(({theme}) => theme.typography);
+const ShopDropdown = ({
+    companyId,
+    companyName,
+    productList
+}) => {
+    const typography = useSelector(({
+        theme
+    }) => theme.typography);
     const colors = useColors();
-    const classes = styles({colors});
+    const classes = styles({
+        colors
+    });
     const [toggle, setToggle] = useState(true);
 
     return (

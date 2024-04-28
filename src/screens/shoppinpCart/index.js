@@ -1,5 +1,14 @@
-import {SafeAreaView, Text, View, ScrollView} from 'react-native';
-import {EmptyCard, ShopDropdown, TopBar} from '../../components';
+import {
+    SafeAreaView,
+    ScrollView,
+    Text,
+    View,
+} from 'react-native';
+import {
+    EmptyCard,
+    ShopDropdown,
+    TopBar
+} from '../../components';
 import style from './stylesheet';
 import {
     pays,
@@ -8,11 +17,15 @@ import {
     useShoppingCart,
 } from '../../utils/settings';
 import storage from '../../storage';
-import {useNavigation} from '@react-navigation/native';
+import {
+    useNavigation
+} from '@react-navigation/native';
 
 const ShoppingCart = () => {
     const colors = useColors();
-    const classes = style({colors});
+    const classes = style({
+        colors
+    });
     const list = useShoppingCart();
     let basketTotal = useBasketTotal();
     const navigation = useNavigation();
@@ -22,7 +35,10 @@ const ShoppingCart = () => {
         const token = storage.getString('accessToken');
         let userId = JSON.parse(authUser)._id;
 
-        pays({userId, token});
+        pays({
+            userId,
+            token
+        });
     };
 
     return (

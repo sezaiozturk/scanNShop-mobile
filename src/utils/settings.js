@@ -1,7 +1,15 @@
-import {useSelector} from 'react-redux';
-import {change} from '../redux/themeSlice';
-import {changeLocale} from '../redux/localeSlice';
-import {store} from '../redux/store';
+import {
+    useSelector
+} from 'react-redux';
+import {
+    change
+} from '../redux/themeSlice';
+import {
+    changeLocale
+} from '../redux/localeSlice';
+import {
+    store
+} from '../redux/store';
 import {
     addProduct,
     total,
@@ -10,15 +18,23 @@ import {
     pay,
 } from '../redux/shopSlice';
 
-export const useColors = () => useSelector(({theme}) => theme.colors);
+export const useColors = () => useSelector(({
+    theme
+}) => theme.colors);
 
-export const useLanguage = () => useSelector(({locale}) => locale.locale);
+export const useLanguage = () => useSelector(({
+    locale
+}) => locale.locale);
 
 export const useActiveLanguage = () =>
-    useSelector(({locale}) => locale.activeLocale);
+    useSelector(({
+        locale
+    }) => locale.activeLocale);
 
 export const useShoppingCart = () =>
-    useSelector(({shop}) => shop.shoppingCartList);
+    useSelector(({
+        shop
+    }) => shop.shoppingCartList);
 
 export const changeThemes = () => store.dispatch(change());
 
@@ -41,9 +57,13 @@ export const updates = (
 
 export const totals = () => store.dispatch(total());
 
-export const useBasketTotal = () => useSelector(({shop}) => shop.basketTotal);
+export const useBasketTotal = () => useSelector(({
+    shop
+}) => shop.basketTotal);
 
-export const useToken = () => useSelector(({auth}) => auth.token);
+export const useToken = () => useSelector(({
+    auth
+}) => auth.token);
 
 export const getShoppingCartLists = shoppingCarts =>
     store.dispatch(getShoppingCartList(shoppingCarts));

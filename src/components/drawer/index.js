@@ -1,18 +1,35 @@
-import {View, TouchableOpacity, Text, Image} from 'react-native';
-import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
-import styles from './stylesheet';
 import {
     DrawerContentScrollView,
     DrawerItemList,
 } from '@react-navigation/drawer';
+import {
+    View,
+    TouchableOpacity,
+    Text,
+    Image
+} from 'react-native';
+import React,
+{
+    useState
+} from 'react';
+import {
+    useSelector
+} from 'react-redux';
+import styles from './stylesheet';
+
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import storage from '../../storage';
 
 const Drawer = props => {
-    const colors = useSelector(({theme}) => theme.colors);
-    const typography = useSelector(({theme}) => theme.typography);
-    const classes = styles({colors});
+    const colors = useSelector(({
+        theme
+    }) => theme.colors);
+    const typography = useSelector(({
+        theme
+    }) => theme.typography);
+    const classes = styles({
+        colors
+    });
 
     return (
         <View style={classes.container}>
@@ -34,10 +51,15 @@ const Drawer = props => {
                     storage.delete('accessToken');
                     props.navigation.reset({
                         index: 0,
-                        routes: [{name: 'AuthStack'}],
+                        routes: [{
+                            name: 'AuthStack'
+                        }],
                     });
                 }}>
-                <View style={{flexDirection: 'row', gap: 10}}>
+                <View style={{
+                    flexDirection: 'row',
+                    gap: 10
+                }}>
                     <Text>
                         <Icon
                             name={'exit-to-app'}
@@ -45,9 +67,14 @@ const Drawer = props => {
                             color={colors.icon}
                         />
                     </Text>
-                    <Text style={classes.text}>Çıkış</Text>
+                    <Text style={classes.text}
+                    >
+                        Çıkış
+                    </Text>
                 </View>
-                <Text style={classes.text}>version 0.1(beta)</Text>
+                <Text style={classes.text}>
+                    version 0.1(beta)
+                </Text>
             </TouchableOpacity>
         </View>
     );
