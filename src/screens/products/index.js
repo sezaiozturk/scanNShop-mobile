@@ -15,8 +15,11 @@ import {
 import style from './stylesheet';
 import {
     useColors
-
 } from '../../utils/settings';
+import {
+    HOST
+} from '../../constants';
+
 const Products = ({
     navigation,
     route
@@ -38,7 +41,7 @@ const Products = ({
     const getProducts = () => {
         let temp = [];
         axios
-            .post('http://172.29.16.82:3000/admin/find', {
+            .post(`http://${HOST}:3000/admin/find`, {
                 companyId: id
             })
             .then(products => {
@@ -65,13 +68,27 @@ const Products = ({
                 }}
                 rightOne={{
                     name: 'camera',
-                    onPress: () => navigation.goBack(),
+                    onPress: () => {
+                        navigation.navigate('CameraScreen', {
+                            productList: products,
+                            from: "photo"
+                        });
+                        /*axios
+                            .post(`http://${HOST}:3000/admin/run`)
+                            .then((res) => {
+
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            });*/
+                    }
                 }}
                 rightTwo={{
                     name: 'barcode-scan',
                     onPress: () => {
-                        navigation.navigate('BarcodScannerScreen', {
+                        navigation.navigate('CameraScreen', {
                             productList: products,
+                            from: "barcod"
                         });
                     },
                 }}

@@ -35,7 +35,7 @@ const EmptyCard = ({
             style={classes.emptyShoppingCard}
             activeOpacity={0.6}
             onPress={() => navigation.navigate('CompaniesScreen')}>
-            <Icon name={icon} color={colors.primary} size={100} />
+            <Icon name={icon} color={colors.primary} size={60} />
             <Text style={classes.empty}>{title}.</Text>
             <Text style={classes.empty}>{subTitle}.</Text>
         </TouchableOpacity>

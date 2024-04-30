@@ -24,6 +24,9 @@ import axios from 'axios';
 import {
     Text
 } from 'react-native-paper';
+import {
+    HOST
+} from '../../constants';
 
 const PastShoppingCart = () => {
     const colors = useColors();
@@ -40,7 +43,7 @@ const PastShoppingCart = () => {
 
         axios
             .post(
-                'http://localhost:3000/user/getPastShoppingCart',
+                `http://${HOST}:3000/user/getPastShoppingCart`,
                 {
                     _id: userId,
                 },

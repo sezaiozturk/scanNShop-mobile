@@ -29,7 +29,7 @@ const style = ({
             justifyContent: 'flex-end',
             alignItems: 'center',
             width: '100%',
-            gap: 30,
+            gap: 20,
             flex: 1,
         },
         titleContainer: {
@@ -44,7 +44,8 @@ const style = ({
         title: {
             fontFamily: 'Alegreya-Medium',
             color: colors.white,
-            fontSize: 14,
+            textAlign: "center",
+            fontSize: 14
         },
         product: {
             fontFamily: 'Alegreya-Medium',
@@ -67,6 +68,13 @@ const style = ({
             paddingBottom: 5,
             fontSize: 20,
         },
+        takePhoto: {
+            backgroundColor: colors.black,
+            borderColor: colors.white,
+            borderRadius: 50,
+            borderWidth: 1,
+            padding: 15,
+        },
         close: {
             backgroundColor: colors.black,
             borderColor: colors.white,
@@ -74,6 +82,7 @@ const style = ({
             borderWidth: 1,
             padding: 10,
         },
+
     });
 };
 export default style;

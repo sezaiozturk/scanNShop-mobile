@@ -5,8 +5,8 @@ export {
     default as Products
 } from './products';
 export {
-    default as BarcodScanner
-} from './barcodScanner';
+    default as CameraScreen
+} from './cameraScreen';
 export {
     default as ShoppingCart
 } from './shoppinpCart';

@@ -10,7 +10,7 @@ import {
 } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
-    BarcodScanner,
+    CameraScreen,
     Companies,
     Products,
     ShoppingCart,
@@ -45,8 +45,8 @@ const HomeStack = () => {
             <Stack.Screen name="CompaniesScreen" component={Companies} />
             <Stack.Screen name="ProductsScreen" component={Products} />
             <Stack.Screen
-                name="BarcodScannerScreen"
-                component={BarcodScanner}
+                name="CameraScreen"
+                component={CameraScreen}
             />
             <Stack.Screen name="ShoppingCartScreen" component={ShoppingCart} />
         </Stack.Navigator>

@@ -33,6 +33,9 @@ import {
     HelperText,
     Snackbar,
 } from 'react-native-paper';
+import {
+    HOST
+} from '../../constants';
 
 const Login = () => {
     const [checked, setChecked] = useState(false);
@@ -83,7 +86,7 @@ const Login = () => {
         email, password
     }) => {
         axios
-            .post('http://172.29.16.82:3000/user/login', {
+            .post(`http://${HOST}:3000/user/login`, {
                 email,
                 password,
             })

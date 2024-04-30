@@ -14,6 +14,9 @@ import {
     updates, useColors
 } from '../../utils/settings';
 import storage from '../../storage';
+import {
+    HOST
+} from '../../constants';
 
 const ShopCard = ({
     id,
@@ -89,7 +92,7 @@ const ShopCard = ({
         <View style={classes.container} key={id}>
             <View style={classes.leftContainer}>
                 <Image
-                    src={`http://localhost:3000/${image}`}
+                    src={`http://${HOST}:3000/${image}`}
                     style={classes.photo}
                 />
             </View>

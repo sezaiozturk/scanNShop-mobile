@@ -7,14 +7,15 @@ const style = ({
 }) => {
     return StyleSheet.create({
         emptyShoppingCard: {
+            justifyContent: "center",
             alignItems: 'center',
-            paddingVertical: 100,
+            height: 350,
         },
         empty: {
             fontFamily: 'Alegreya-Medium',
             color: colors.primary,
             marginTop: 20,
-            fontSize: 20,
+            fontSize: 18,
         },
     });
 };

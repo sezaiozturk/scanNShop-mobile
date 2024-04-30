@@ -2,6 +2,9 @@ import {
     createSlice
 } from '@reduxjs/toolkit';
 import axios from 'axios';
+import {
+    HOST
+} from '../../constants';
 
 const initialState = {
     shoppingCartList: [],
@@ -47,7 +50,7 @@ export const shopSlice = createSlice({
                 }
             }
             axios.post(
-                'http://localhost:3000/user/updateShoppingCart',
+                `http://${HOST}:3000/user/updateShoppingCart`,
                 {
                     _id: action.payload.userId,
                     shoppingCarts: state.shoppingCartList,
@@ -87,7 +90,7 @@ export const shopSlice = createSlice({
             }
 
             axios.post(
-                'http://localhost:3000/user/updateShoppingCart',
+                `http://${HOST}:3000/user/updateShoppingCart`,
                 {
                     _id: action.payload.userId,
                     shoppingCarts: state.shoppingCartList,
@@ -114,7 +117,7 @@ export const shopSlice = createSlice({
         pay: (state, action) => {
             axios
                 .post(
-                    'http://localhost:3000/user/pay',
+                    `http://${HOST}:3000/user/pay`,
                     {
                         _id: action.payload.userId,
                         shoppingCarts: state.shoppingCartList,
@@ -127,7 +130,7 @@ export const shopSlice = createSlice({
                 )
                 .then(res => {
                     axios.post(
-                        'http://localhost:3000/user/updateShoppingCart',
+                        `http://${HOST}:3000/user/updateShoppingCart`,
                         {
                             _id: res.data._id,
                             shoppingCarts: [],

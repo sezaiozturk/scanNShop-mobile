@@ -29,6 +29,9 @@ import {
     useTheme,
     HelperText,
 } from 'react-native-paper';
+import {
+    HOST
+} from '../../constants';
 
 const Signup = () => {
     const [secureTextEntry, setSecureTextEntry] = useState(true);
@@ -51,7 +54,7 @@ const Signup = () => {
         password
     }) => {
         axios
-            .post('http://localhost:3000/user/signup', {
+            .post(`http://${HOST}:3000/user/signup`, {
                 name,
                 email,
                 password,

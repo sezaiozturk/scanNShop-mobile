@@ -25,6 +25,9 @@ import {
     useNavigation
 } from '@react-navigation/native';
 import storage from '../../storage';
+import {
+    HOST
+} from '../../constants';
 
 const Companies = () => {
     const colors = useColors();
@@ -41,7 +44,7 @@ const Companies = () => {
     const getCompanies = () => {
         let temp = [];
         axios
-            .post('http://172.29.16.82:3000/companies')
+            .post(`http://${HOST}:3000/companies`)
             .then(companies => {
                 companies.data.forEach(company => {
                     temp.push(company);
@@ -58,7 +61,7 @@ const Companies = () => {
             let userId = JSON.parse(authUser)._id;
             axios
                 .post(
-                    'http://localhost:3000/user/getShoppingCart',
+                    `http://${HOST}:3000/user/getShoppingCart`,
                     {
                         _id: userId,
                     },

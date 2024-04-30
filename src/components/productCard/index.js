@@ -18,6 +18,9 @@ import {
     useToken,
 } from '../../utils/settings';
 import storage from '../../storage';
+import {
+    HOST
+} from '../../constants';
 
 const ProductCard = ({
     companyName,
@@ -47,7 +50,7 @@ const ProductCard = ({
             <View style={classes.leftContainer}>
                 <Image
                     style={classes.image}
-                    src={`http://localhost:3000/${product.image}`}
+                    src={`http://${HOST}:3000/${product.image}`}
                 />
                 <View>
                     <Text style={classes.name}>{product.name}</Text>
