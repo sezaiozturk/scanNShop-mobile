@@ -86,6 +86,12 @@ const CameraScreen = ({
         );
     };
 
+    const convertToObject = (str) => {
+        const regex = /'([^']+)'/g;
+        const matches = str.match(regex);
+        return matches.map(match => match.slice(1, -1));
+    };
+
     const photoUpload = () => {
         const formData = new FormData();
         formData.append('file', {
@@ -94,13 +100,14 @@ const CameraScreen = ({
             name: photoFile.path.split("/")[7]
         });
 
-        axios.post(`http://${HOST}:3000/upload`, formData, {
+        axios.post(`http://${HOST}:3000/user/upload`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
         })
             .then(res => {
-                console.log(res.data.filePath);
+                const ids = convertToObject(res.data);
+                console.log(ids);
             })
             .catch(error => {
                 console.log("yüklenmedi");
