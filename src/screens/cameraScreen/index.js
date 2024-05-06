@@ -107,7 +107,9 @@ const CameraScreen = ({
         })
             .then(res => {
                 const ids = convertToObject(res.data);
-                console.log(ids);
+                navigation.navigate("ProductsScreen", {
+                    similarIds: ids
+                });
             })
             .catch(error => {
                 console.log("yüklenmedi");

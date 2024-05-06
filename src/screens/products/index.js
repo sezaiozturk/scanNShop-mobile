@@ -31,12 +31,28 @@ const Products = ({
     const [products, setProducts] = useState([]);
     const {
         id,
-        name
+        name,
+        similarIds
     } = route.params;
 
     useEffect(() => {
         getProducts();
     }, []);
+
+    useEffect(() => {
+        if (similarIds) {
+            const temp = [];
+            similarIds.forEach((id) => {
+                products.forEach((product) => {
+                    if (product.image.split("/")[1] === id) {
+                        temp.push(product);
+                    }
+                });
+            });
+            setProducts(temp);
+        }
+    }, [similarIds]);
+
 
     const getProducts = () => {
         let temp = [];
@@ -52,6 +68,7 @@ const Products = ({
             })
             .catch(err => console.log(err));
     };
+
     const renderItem = ({
         item,
         index
