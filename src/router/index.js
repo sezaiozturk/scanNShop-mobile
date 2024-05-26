@@ -10,13 +10,14 @@ import {
 } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
+    PastShoppingCart,
+    ShoppingCart,
     CameraScreen,
     Companies,
     Products,
-    ShoppingCart,
-    Login,
     Signup,
-    PastShoppingCart,
+    Search,
+    Login,
 } from '../screens';
 import storage from '../storage';
 import {
@@ -42,13 +43,26 @@ const HomeStack = () => {
             screenOptions={{
                 headerShown: false,
             }}>
-            <Stack.Screen name="CompaniesScreen" component={Companies} />
-            <Stack.Screen name="ProductsScreen" component={Products} />
+            <Stack.Screen
+                name="CompaniesScreen"
+                component={Companies}
+            />
+            <Stack.Screen
+                name="SearchScreen"
+                component={Search}
+            />
+            <Stack.Screen
+                name="ProductsScreen"
+                component={Products}
+            />
             <Stack.Screen
                 name="CameraScreen"
                 component={CameraScreen}
             />
-            <Stack.Screen name="ShoppingCartScreen" component={ShoppingCart} />
+            <Stack.Screen
+                name="ShoppingCartScreen"
+                component={ShoppingCart}
+            />
         </Stack.Navigator>
     );
 };

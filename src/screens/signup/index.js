@@ -63,7 +63,7 @@ const Signup = () => {
                 if (res.data === true) {
                     navigation.navigate('LoginScreen');
                 } else {
-                    console.log(res.data);
+                    //console.log(res.data);
                 }
             })
             .catch(err => {

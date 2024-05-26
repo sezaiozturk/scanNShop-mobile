@@ -44,7 +44,7 @@ const ShoppingCart = () => {
     return (
         <SafeAreaView style={classes.container}>
             <TopBar
-                title={'Sepetim'}
+                title={'My cart'}
                 leftOne={{
                     name: 'chevron-left',
                     onPress: () => navigation.goBack(),
@@ -74,7 +74,7 @@ const ShoppingCart = () => {
                 )}
             </ScrollView>
             <View style={classes.totalContainer}>
-                <Text style={classes.title}>Toplam</Text>
+                <Text style={classes.title}>Total</Text>
                 <View style={classes.innerContainer}>
                     <Text style={classes.total}>{basketTotal}</Text>
                     <Text style={classes.currency}>TL</Text>

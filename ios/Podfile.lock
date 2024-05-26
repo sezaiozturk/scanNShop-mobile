@@ -889,12 +889,14 @@ PODS:
   - React-Mapbuffer (0.73.1):
     - glog
     - React-debug
-  - react-native-mmkv (2.12.1):
+  - react-native-mmkv (2.12.2):
+    - glog
     - MMKV (>= 1.3.3)
+    - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - react-native-safe-area-context (4.9.0):
+  - react-native-safe-area-context (4.10.1):
     - React-Core
-  - react-native-worklets-core (1.2.0):
+  - react-native-worklets-core (1.3.3):
     - React
     - React-callinvoker
     - React-Core
@@ -1065,27 +1067,28 @@ PODS:
     - React-jsi (= 0.73.1)
     - React-logger (= 0.73.1)
     - React-perflogger (= 0.73.1)
-  - RealmJS (12.6.2):
+  - RealmJS (12.8.1):
     - React
-  - RNGestureHandler (2.15.0):
+  - RNGestureHandler (2.16.2):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - RNReanimated (3.7.2):
+  - RNReanimated (3.11.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - ReactCommon/turbomodule/core
-  - RNScreens (3.29.0):
+  - RNScreens (3.31.1):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - RNVectorIcons (10.0.3):
+    - React-RCTImage
+  - RNVectorIcons (10.1.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
   - SocketRocket (0.6.1)
-  - VisionCamera (3.9.1):
+  - VisionCamera (3.9.2):
     - React
     - React-callinvoker
     - React-Core
@@ -1311,9 +1314,9 @@ SPEC CHECKSUMS:
   React-jsinspector: 369048694e39942063c5d08e9580b43e2edd379a
   React-logger: e0c1e918d9588a9f39c9bc62d9d6bfe9ca238d9d
   React-Mapbuffer: 9731a0a63ebaf8976014623c4d637744d7353a7c
-  react-native-mmkv: 124b22209aacdcd172b6ac39071b9647080f0411
-  react-native-safe-area-context: b97eb6f9e3b7f437806c2ce5983f479f8eb5de4b
-  react-native-worklets-core: a316975bba20b73d47aa4d41bffb0ca984ba592e
+  react-native-mmkv: 61c0e00963aee12f65c2c34ee83a3dc890026a0d
+  react-native-safe-area-context: dcab599c527c2d7de2d76507a523d20a0b83823d
+  react-native-worklets-core: f51430dd07bf5343d4918d28a4bb00fe8f98b982
   React-nativeconfig: 37aecd26d64b79327c3f10e43b2e9a6c425e0a60
   React-NativeModulesApple: 9ca6d2eaa1dd5606588262195b46d0774bdec83a
   React-perflogger: 5ffc4d6ccb74eaac7b8b2867e58a447232483d6d
@@ -1334,14 +1337,14 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 93a4c84e46a85c3fc9678abd4f6923b785226ea7
   React-utils: debda2c206770ee2785bdebb7f16d8db9f18838a
   ReactCommon: ddb128564dcbfa0287d3d1a2d10f8c7457c971f6
-  RealmJS: 385df5ee940d96f1de26b1dab153e325633d3052
-  RNGestureHandler: deda62b8339496ba721a45e0f3e2d7a319932cee
-  RNReanimated: 3850671fd0c67051ea8e1e648e8c3e86bf3a28eb
-  RNScreens: b582cb834dc4133307562e930e8fa914b8c04ef2
-  RNVectorIcons: 210f910e834e3485af40693ad4615c1ec22fc02b
+  RealmJS: 2c7fdb3991d7655fba5f88eb288f75eaf5cb9980
+  RNGestureHandler: 48c9d38f57c7761b4153def57b718f491f4bbb4b
+  RNReanimated: 071599dab9e3769c03b84c984c87dc79087fef2f
+  RNScreens: 79c1020e7f52f4edde5ad96540f6e33c8b9b3b6c
+  RNVectorIcons: d9fb2ffc051a345631473b99f36b3add2dd547d4
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
-  VisionCamera: 609b194489f336792caa5eda305a3fdd4ba5d44c
-  Yoga: 2b33a7ac96c58cdaa7b810948fc6a2a76ed2d108
+  VisionCamera: 6c8ca7d04fc62fafccd8f8ad584e96f5303671f5
+  Yoga: 4f53dc50008d626fa679c7a1cb4bed898f8c0bde
 
 PODFILE CHECKSUM: b2d5604c299548adcf350e92d2bed711d8760662
 

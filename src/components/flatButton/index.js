@@ -32,7 +32,9 @@ const FlatButton = ({
             <TouchableOpacity
                 style={classes.button}
                 activeOpacity={0.5}
-                onPress={() => navigation.navigate('ShoppingCartScreen')}
+                onPress={() => {
+                    navigation.navigate('ShoppingCartScreen')
+                }}
             >
                 <Icon
                     name={'shopping-outline'}

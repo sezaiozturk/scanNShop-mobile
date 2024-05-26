@@ -69,7 +69,7 @@ const Drawer = props => {
                     </Text>
                     <Text style={classes.text}
                     >
-                        Çıkış
+                        Exit
                     </Text>
                 </View>
                 <Text style={classes.text}>

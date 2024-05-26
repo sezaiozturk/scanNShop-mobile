@@ -40,10 +40,13 @@ const CameraScreen = ({
     } = useCameraPermission();
 
     const {
+        allCompany = false,
+        companies,
+        allProducts,
         productList,
         from
     } = route.params;
-    const [name, setName] = useState('Ürün Adı');
+    const [name, setName] = useState('Product Name');
     const [price, setPrice] = useState(0);
     const [photoFile, setPhotoFile] = useState(null);
     const camera = useRef(null);
@@ -63,16 +66,25 @@ const CameraScreen = ({
     const codeScanner = useCodeScanner({
         codeTypes: ['qr', 'ean-13'],
         onCodeScanned: codes => {
-            console.log(codes[0].value);
-            const readQr = productList.find(
-                product => product.barkod == codes[0].value,
-            );
-            if (readQr != null) {
-                setName(readQr.name);
-                setPrice(readQr.price);
+            //console.log(codes[0].value);
+            if (allCompany) {
+                const filterProducts = allProducts.filter(product => product.barkod === codes[0].value);
+                navigation.replace("SearchScreen", {
+                    filterProducts,
+                    allProducts,
+                    companies,
+                });
             } else {
-                setName('tanımsız ürün');
-                setPrice(0);
+                const readQr = productList.find(
+                    product => product.barkod == codes[0].value,
+                );
+                if (readQr != null) {
+                    setName(readQr.name);
+                    setPrice(readQr.price);
+                } else {
+                    setName('Undefined Product');
+                    setPrice(0);
+                }
             }
         },
     });
@@ -92,6 +104,7 @@ const CameraScreen = ({
         return matches.map(match => match.slice(1, -1));
     };
 
+    //point1
     const photoUpload = () => {
         const formData = new FormData();
         formData.append('file', {
@@ -107,12 +120,19 @@ const CameraScreen = ({
         })
             .then(res => {
                 const ids = convertToObject(res.data);
-                navigation.navigate("ProductsScreen", {
-                    similarIds: ids
-                });
+                allCompany ?
+                    navigation.replace("SearchScreen", {
+                        similarIds: ids,
+                        allProducts,
+                        companies
+                    })
+                    :
+                    navigation.navigate("ProductsScreen", {
+                        similarIds: ids
+                    });
             })
-            .catch(error => {
-                console.log("yüklenmedi");
+            .catch(err => {
+                console.log(err);
             });
     };
 
@@ -148,16 +168,16 @@ const CameraScreen = ({
                                 from === "barcod" ?
                                     <View>
                                         <Text style={classes.title}>
-                                            Lütfen ürün barkodunu
+                                            Please scan the product
                                         </Text>
-                                        <Text style={classes.title}>taratın</Text>
+                                        <Text style={classes.title}>barcode</Text>
                                     </View>
                                     :
                                     <View>
                                         <Text style={classes.title}>
-                                            Lütfen ürünün resmini
+                                            Please take a picture
                                         </Text>
-                                        <Text style={classes.title}>çekin</Text>
+                                        <Text style={classes.title}>of the product</Text>
                                     </View>
                             }
                         </View>
@@ -165,21 +185,25 @@ const CameraScreen = ({
                     <View style={classes.bottomContainer}>
                         {
                             from === "barcod" ?
-                                <View style={classes.titleContainer}>
-                                    <Text style={classes.product}>{name}</Text>
-                                    <View style={classes.priceContainer}>
-                                        <Text style={classes.price}>{price}</Text>
-                                        <Text style={classes.currency}>TL</Text>
+                                (!allCompany ?
+                                    <View View style={classes.titleContainer}>
+                                        <Text style={classes.product}>{name}</Text>
+                                        <View style={classes.priceContainer}>
+                                            <Text style={classes.price}>{price}</Text>
+                                            <Text style={classes.currency}>TL</Text>
+                                        </View>
                                     </View>
-                                </View>
+                                    :
+                                    null
+                                )
                                 :
                                 <TouchableOpacity
                                     style={classes.takePhoto}
                                     activeOpacity={0.5}
                                     onPress={async () => {
                                         const file = await camera.current.takePhoto();
-                                        const result = await fetch(`file://${file.path}`);
-                                        const data = await result.blob();
+                                        //const result = await fetch(`file://${file.path}`);
+                                        //const data = await result.blob();
                                         setPhotoFile(file);
                                     }}>
                                     <Icon name="camera" size={35} color={colors.white} />
@@ -194,7 +218,7 @@ const CameraScreen = ({
                     </View>
                 </View>
             </View>
-        </View>
+        </View >
     );
 };
 export default CameraScreen;

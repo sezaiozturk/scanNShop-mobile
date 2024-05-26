@@ -4,7 +4,6 @@ import {
     FlatList,
     View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
     CompanyCard,
     FlatButton,
@@ -35,8 +34,11 @@ const Companies = () => {
         colors
     });
     const [companies, setCompanies] = useState([]);
+    const [allProducts, setAllProducts] = useState([]);
+
     const navigation = useNavigation();
     useEffect(() => {
+        getAllProducts();
         getShoppingCart();
         getCompanies();
     }, []);
@@ -83,6 +85,19 @@ const Companies = () => {
         }
     };
 
+    const getAllProducts = () => {
+        let temp = [];
+        axios
+            .post(`http://${HOST}:3000/admin/find`)
+            .then(products => {
+                products.data.forEach(product => {
+                    temp.push(product);
+                });
+                setAllProducts(temp);
+            })
+            .catch(err => console.log(err));
+    };
+
     const renderItem = ({
         item
     }) => {
@@ -94,6 +109,28 @@ const Companies = () => {
                 leftOne={{
                     name: 'menu',
                     onPress: () => navigation.openDrawer(),
+                }}
+                rightOne={{
+                    name: 'camera',
+                    onPress: () => {
+                        navigation.navigate('CameraScreen', {
+                            companies,
+                            allProducts,
+                            allCompany: true,
+                            from: "photo"
+                        });
+                    }
+                }}
+                rightTwo={{
+                    name: 'barcode-scan',
+                    onPress: () => {
+                        navigation.navigate('CameraScreen', {
+                            companies,
+                            allProducts,
+                            allCompany: true,
+                            from: "barcod"
+                        });
+                    },
                 }}
             />
             <FlatList

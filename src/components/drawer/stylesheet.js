@@ -18,8 +18,8 @@ const style = ({
             marginBottom: 30,
             borderRadius: 5,
             width: 'auto',
-            marginTop: 10,
-            height: 150,
+            marginTop: 30,
+            height: 100,
         },
         itemContainer: {
             backgroundColor: colors.secondary,

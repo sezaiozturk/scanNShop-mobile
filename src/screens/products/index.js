@@ -10,6 +10,7 @@ import {
 import axios from 'axios';
 import {
     useEffect,
+    useRef,
     useState
 } from 'react';
 import style from './stylesheet';
@@ -41,7 +42,7 @@ const Products = ({
 
     useEffect(() => {
         if (similarIds) {
-            const temp = [];
+            let temp = [];
             similarIds.forEach((id) => {
                 products.forEach((product) => {
                     if (product.image.split("/")[1] === id) {
@@ -90,14 +91,6 @@ const Products = ({
                             productList: products,
                             from: "photo"
                         });
-                        /*axios
-                            .post(`http://${HOST}:3000/admin/run`)
-                            .then((res) => {
-
-                            })
-                            .catch((err) => {
-                                console.log(err);
-                            });*/
                     }
                 }}
                 rightTwo={{
