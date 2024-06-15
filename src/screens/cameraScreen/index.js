@@ -66,7 +66,6 @@ const CameraScreen = ({
     const codeScanner = useCodeScanner({
         codeTypes: ['qr', 'ean-13'],
         onCodeScanned: codes => {
-            //console.log(codes[0].value);
             if (allCompany) {
                 const filterProducts = allProducts.filter(product => product.barkod === codes[0].value);
                 navigation.replace("SearchScreen", {
@@ -104,7 +103,6 @@ const CameraScreen = ({
         return matches.map(match => match.slice(1, -1));
     };
 
-    //point1
     const photoUpload = () => {
         const formData = new FormData();
         formData.append('file', {
@@ -147,7 +145,7 @@ const CameraScreen = ({
                             ref={camera}
                             style={classes.camera}
                             device={device}
-                            codeScanner={codeScanner}
+                            codeScanner={from === "barcod" ? codeScanner : false}
                             isActive={true}
                             photo={true}
                         />
@@ -202,8 +200,6 @@ const CameraScreen = ({
                                     activeOpacity={0.5}
                                     onPress={async () => {
                                         const file = await camera.current.takePhoto();
-                                        //const result = await fetch(`file://${file.path}`);
-                                        //const data = await result.blob();
                                         setPhotoFile(file);
                                     }}>
                                     <Icon name="camera" size={35} color={colors.white} />
